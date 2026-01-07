@@ -1,6 +1,12 @@
 body{
     font-family: Arial, sans-serif;
-    background-color: linear-gradient(90deg, #939598 0%, #939598 70%, #48484a 100%);
+    background: linear-gradient(0deg, #48484a 0%,#939598 100%);
     margin: 0;
     padding: 0;
+    width: 100%;
+}
+.dobra-amarela{
+    background-color: #ffcb08;
+    padding: 1rem 0;
+    width: 100%;
 }
