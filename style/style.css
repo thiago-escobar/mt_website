@@ -1,6 +1,6 @@
 body{
     font-family: Arial, sans-serif;
-    background: linear-gradient(0deg, #48484a 0%,#939598 100%);
+    background: linear-gradient(0deg, #28282a 0%,#939598 100%);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -9,18 +9,20 @@ body{
     background-color: #ffcb08;
     padding: 1rem 0;
     width: 100%;
+    color: #444;
 }
 
 .dobra-cinza{
     background-color: rgba(0,0,0,0);
     padding: 1rem 0;
     width: 100%;
+    color: #999;
 }
 
 .dobra-parallax{
     background-image: url('../img/caminhao.jpg');
     min-height: 400px; 
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
