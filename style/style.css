@@ -10,3 +10,18 @@ body{
     padding: 1rem 0;
     width: 100%;
 }
+
+.dobra-cinza{
+    background-color: rgba(0,0,0,0);
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.dobra-parallax{
+    background-image: url('../img/caminhao.jpg');
+    min-height: 400px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
