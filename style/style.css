@@ -7,18 +7,16 @@ body{
 }
 .dobra-amarela{
     background-color: #ffcb08;
-    padding: 1rem 0;
+    padding: 2rem 0;
     width: 100%;
     color: #444;
 }
-
 .dobra-cinza{
     background-color: rgba(0,0,0,0);
-    padding: 1rem 0;
+    padding: 2rem 0;
     width: 100%;
     color: #DDD;
 }
-
 .dobra-parallax{
     background-image: url('../img/caminhao.jpg');
     min-height: 400px; 
