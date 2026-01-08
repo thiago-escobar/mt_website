@@ -11,6 +11,12 @@ body{
     width: 100%;
     color: #444;
 }
+.dobra-branca{
+    background-color: rgba(221, 221, 221, 0.8);
+    padding: 2rem 0;
+    width: 100%;
+    color: #444;
+}
 .dobra-cinza{
     background-color: rgba(0,0,0,0);
     padding: 2rem 0;
