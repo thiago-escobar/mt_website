@@ -142,3 +142,15 @@ body{
 .img_mosaico{
     cursor: pointer;
 }
+.numero-contavel{
+    font-size: 4rem;
+    font-weight: bold;
+}
+.numero-contavel-titulo{
+    text-align: center;
+}
+.numero-contavel p{
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0 1rem;
+}
