@@ -5,6 +5,16 @@ body{
     padding: 0;
     width: 100%;
 }
+.menu-topo{
+    background-color: #ffcb08;
+    padding: 1rem 0;
+    width: 100%;
+    height: auto;
+    color: #444;
+    overflow: hidden;
+    border-bottom: 2px solid #444;
+    position: fixed;
+}
 .dobra-amarela{
     background-color: #ffcb08;
     padding: 2rem 0;
@@ -31,7 +41,7 @@ body{
 }
 .dobra-parallax{
     background-image: url('../img/escavadeira.jpg');
-    min-height: 500px; 
+    min-height: 550px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,6 +54,15 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.rodape{
+    background-color: #ffcb08;
+    padding: 2rem 0;
+    width: 100%;
+    height: auto;
+    color: #444;
+    overflow: hidden;
+    border-top: 2px solid #444;
 }
 .col-interna{
     float: left;
