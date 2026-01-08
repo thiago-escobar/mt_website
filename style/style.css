@@ -39,8 +39,8 @@ body{
     Height: 48px;
     Width: 160px;
     position: fixed;
-    bottom: 40px;
-    right: 40px;
+    bottom: 20px;
+    right: 20px;
     border-radius: 50px;
     box-shadow: 3px 3px 5px 1px #333;
     z-index: 100;
@@ -59,4 +59,12 @@ body{
     font-size: 0.75rem;
     font-weight: bold;
     text-align: center;
+}
+.img_dobra{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+#mosaico_imagens img{
+    margin-bottom: 30px;
 }
