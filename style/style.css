@@ -9,21 +9,35 @@ body{
     background-color: #ffcb08;
     padding: 2rem 0;
     width: 100%;
+    height: auto;
     color: #444;
+    overflow: hidden;
 }
 .dobra-branca{
     background-color: rgba(255, 255, 255, 0.95);
     padding: 2rem 0;
     width: 100%;
+    height: auto;
     color: #444;
+    overflow: hidden;
 }
 .dobra-cinza{
     background-color: rgba(0,0,0,0);
     padding: 2rem 0;
     width: 100%;
+    height: auto;
     color: #DDD;
+    overflow: hidden;
 }
 .dobra-parallax{
+    background-image: url('../img/escavadeira.jpg');
+    min-height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dobra-parallax-2{
     background-image: url('../img/caminhao.jpg');
     min-height: 400px; 
     background-attachment: fixed;
