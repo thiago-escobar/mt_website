@@ -1,6 +1,6 @@
 body{
     font-family: Arial, sans-serif;
-    background: linear-gradient(0deg, #28282a 0%,#939598 100%);
+    background: linear-gradient(180deg, #222 0%,#939598 100%);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -12,7 +12,7 @@ body{
     color: #444;
 }
 .dobra-branca{
-    background-color: rgba(221, 221, 221, 0.8);
+    background-color: rgba(255, 255, 255, 0.95);
     padding: 2rem 0;
     width: 100%;
     color: #444;
