@@ -34,3 +34,14 @@ body{
 .col-interna{
     float: left;
 }
+#botao_flutuante_whatsapp{
+    background-color: green;
+    Height: 60px;
+    Width: 60px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 50px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+}
