@@ -1,9 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Code to run when the DOM is fully loaded
-    console.log('DOM fully loaded and parsed');
     
-    // Example: Add event listeners or initialize components here
-    // For example, modal functionality
+    // Image modal functionality
     const modal = document.getElementById('modal_imagem');
     const closeBtn = document.getElementById('close_modal_imagem');
     
@@ -21,5 +18,34 @@ document.addEventListener('DOMContentLoaded', function() {
             modalImg.src = this.src;
             modal.style.display = 'block';
         });
+    });
+    const numerosContaveis = [712, 183, 528]; // Example target numbers
+    const elementosNumeros = [document.querySelector('#numero-contavel-1'), document.querySelector('#numero-contavel-2'), document.querySelector('#numero-contavel-3')];
+    
+    elementosNumeros.forEach((elemento, index) => {
+        if (!elemento) return; // Skip if element doesn't exist
+        
+        let hasStarted = false;
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasStarted) {
+                    hasStarted = true;
+                    let count = 0;
+                    const target = numerosContaveis[index];
+                    const increment = Math.ceil(target / 100); // Adjust speed here
+                    const interval = setInterval(() => {
+                        count += increment;
+                        if (count >= target) {
+                            count = target;
+                            clearInterval(interval);
+                        }
+                        elemento.innerHTML = count;
+                    }, 30); // Update every 30ms
+                }
+            });
+        });
+        
+        observer.observe(elemento);
     });
 });
