@@ -16,7 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
         img.addEventListener('click', function() {
             const modalImg = document.getElementById('img_modal');
             modalImg.src = this.src;
-            modal.style.display = 'block';
+            if (window.innerWidth >= 768) {
+                modal.style.display = 'block';
+            }
         });
     });
     const numerosContaveis = [712, 183, 528]; // Example target numbers
