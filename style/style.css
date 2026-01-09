@@ -160,3 +160,13 @@ body{
     font-weight: normal;
     margin: 0 1rem;
 }
+#bt_enviar_contato{
+    float: right;
+    background-color: #444;
+    border-color: #DDD;
+}
+@media (min-width: 768px) {
+    #nome_contato{
+        width: 98% !important;
+    }
+}

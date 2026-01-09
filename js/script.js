@@ -21,6 +21,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    // Hide/show WhatsApp button based on rodapé visibility
+    const botaoWhatsapp = document.getElementById('botao_flutuante_whatsapp');
+    const rodape = document.querySelector('.rodape');
+    
+    if (botaoWhatsapp && rodape) {
+        const rodapeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    botaoWhatsapp.style.visibility = 'hidden';
+                } else {
+                    botaoWhatsapp.style.visibility = 'visible';
+                }
+            });
+        });
+        
+        rodapeObserver.observe(rodape);
+    }
+    
     const numerosContaveis = [712, 183, 528]; // Example target numbers
     const elementosNumeros = [document.querySelector('#numero-contavel-1'), document.querySelector('#numero-contavel-2'), document.querySelector('#numero-contavel-3')];
     
