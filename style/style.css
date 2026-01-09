@@ -145,6 +145,7 @@ body{
 .numero-contavel{
     font-size: 4rem;
     font-weight: bold;
+    margin-bottom: 30px;
 }
 .numero-contavel-titulo{
     text-align: center;
