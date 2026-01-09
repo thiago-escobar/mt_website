@@ -180,7 +180,7 @@
                     <label for="telefone_trabalhe" class="form-label">Telefone:</label>
                     <input type="tel" class="form-control" id="telefone_trabalhe" required>
                 </div>
-                <div class="col-12 col-md-6 col-interna mb-5">
+                <div class="col-12 col-md-6 col-interna mb-3">
                     <label for="cargo_trabalhe" class="form-label">Cargo:</label>
                     <select class="form-select" id="cargo_trabalhe" required>
                         <option value="" disabled selected>Selecione o cargo</option>
@@ -189,6 +189,10 @@
                         <option value="operador">Operador</option>
                         <option value="outro">Outro</option>
                     </select>
+                </div>
+                <div class="col-12 col-interna mb-4">
+                    <label for="curriculo_trabalhe" class="form-label">Currículo:</label>
+                    <input type="file" class="form-control" id="curriculo_trabalhe" accept=".pdf,.doc,.docx" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="bt_enviar_trabalhe">Enviar</button>
             </form>
