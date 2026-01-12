@@ -1,6 +1,6 @@
 <?php
 // Configuration
-$admin_email = "seu_email@seudominio.com"; // Change this to your email
+$admin_email = "thiagoescobar@matosteixeira.com.br"; // Change this to your email
 $max_file_size = 5 * 1024 * 1024; // 5MB in bytes
 
 // Function to sanitize input
