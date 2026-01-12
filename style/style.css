@@ -15,6 +15,7 @@ h1{
     height: auto;
     overflow: hidden;
     position: fixed;
+    z-index: 10;
 }
 @media (max-width: 767px) {
     .menu-topo {
@@ -29,7 +30,6 @@ h1{
 }
 .dobra-amarela{
     background-color: #FFCB05;
-    padding: 2rem 0;
     width: 100%;
     height: auto;
     color: #444;
@@ -44,7 +44,6 @@ h1{
 }
 .dobra-branca{
     background-color: rgba(255, 255, 255, 0.95);
-    padding: 2rem 0;
     width: 100%;
     height: auto;
     color: #444;
@@ -55,23 +54,58 @@ h1{
 }
 .dobra-branca .destaque{
     font-weight: bold;
-    color: #FFCB05;
+    color: #000;
 }
 .dobra-cinza{
-    /*background-color: rgba(0,0,0,0.75);*/
     background-color: #939598;
-    padding: 2rem 0;
     width: 100%;
     height: auto;
     color: #222;
     overflow: hidden;
 }
 .dobra-cinza h2{
-    color: #FFCB05;
+    color: #000;
 }
 .dobra-cinza .destaque{
     font-weight: bold;
-    color: #FFF;
+}
+.dobra-foto{
+    background-color: #939598;
+    background-image: url('../img/Slide4.PNG');
+    width: 100%;
+    height: auto;
+    color: #222;
+    overflow: hidden;
+    min-height: 550px; 
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dobra-foto h2{
+    color: #FFCB05;
+}
+.dobra-foto .destaque{
+    font-weight: bold;
+}
+.dobra-foto-2{
+    background-color: #939598;
+    background-image: url('../img/Slide8.PNG');
+    width: 100%;
+    height: auto;
+    color: #222;
+    overflow: hidden;
+    min-height: 550px; 
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.dobra-foto-2 h2{
+    color: #FFCB05;
+}
+.dobra-foto-2 .destaque{
+    font-weight: bold;
 }
 .dobra-parallax{
     background-image: url('../img/escavadeira.jpg');
@@ -206,4 +240,36 @@ h1{
     #nome_contato{
         width: 98% !important;
     }
+}
+
+.decoracao_dobra {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x:hidden;
+    z-index: 1;
+}
+.retangulo-amarelo-1{
+    background-color: #FFCB05;
+    transform: skew(20deg);
+    margin-left: -50%;
+}
+.retangulo-branco-1{
+    background-color: #FFF;
+    transform: skew(20deg);
+    margin-left: -50%;
+}
+.retangulo-cinza-1{
+    background-color: #939598;
+    transform: skew(20deg);
+    margin-left: -50%;
+}
+.retangulo-amarelo-2{
+    background-color: #FFCB05;
+    transform: skew(-20deg);
+}
+.conteudo_dobra {
+    padding: 2rem 2rem;
+    position: relative;
+    z-index: 2;
 }

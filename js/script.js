@@ -22,6 +22,45 @@ document.addEventListener('DOMContentLoaded', function() {
     if (csrfTokenTrabalhe) {
         csrfTokenTrabalhe.value = csrfToken;
     }
+
+    // Match height and width of decoracao_dobra to conteudo_dobra
+    function matchDecoraoHeightsAndWidth() {
+        const decoracaoDobras = document.querySelectorAll('.decoracao_dobra');
+        decoracaoDobras.forEach(decoracao => {
+            const conteudoDobra = decoracao.nextElementSibling;
+            if (conteudoDobra && conteudoDobra.classList.contains('conteudo_dobra')) {
+                let height = window.getComputedStyle(conteudoDobra).getPropertyValue('height');
+                let width = window.getComputedStyle(conteudoDobra).getPropertyValue('width');
+                decoracao.style.height = height;
+                decoracao.querySelectorAll('.retangulo-branco-1, .retangulo-cinza-1, .retangulo-amarelo-1, .retangulo-branco-2, .retangulo-cinza-2, .retangulo-amarelo-2').forEach(rect => {
+                    rect.style.height = parseFloat(height) + 'px';/*parseInt(height)+" px";*/
+                    if(parseFloat(width)>2559){
+                        rect.style.width = (parseFloat(width)/1.5) + 'px';
+                    }else{
+                        if(parseFloat(width)>1439){
+                            rect.style.width = (parseFloat(width)/2) + 'px';
+                            
+                        }else{
+                            rect.style.width = parseFloat(width) + 'px';
+                            if(parseFloat(width)<400 || parseFloat(width)>767){
+                                rect.style.marginLeft = '-70%';
+                            }else{
+                                rect.style.marginLeft = '-50%';
+                            }
+                        }
+                    }
+                });
+                /*decoracao.style.height = conteudoDobra.offsetHeight + 'px';
+                decoracao.style.width = conteudoDobra.offsetWidth/3 + 'px';*/
+            }
+        });
+    }
+    
+    // Call on load
+    matchDecoraoHeightsAndWidth();
+    
+    // Call again on window resize
+    window.addEventListener('resize', matchDecoraoHeightsAndWidth);
     
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
@@ -208,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('cargo_trabalhe').value = '';
                         document.getElementById('curriculo_trabalhe').value = '';
                     } else {
-                        alert('Erro: ' + (data.message || 'Não foi possível enviar a candidatura'));
+                        alert('Erro: ' + (data.message || 'Não foi possível enviar a candidatura.'));
                     }
                 })
                 .catch(error => {
