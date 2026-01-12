@@ -2,22 +2,141 @@
 // Configuration
 $admin_email = "thiagoescobar@matosteixeira.com.br"; // Change this to your email
 $max_file_size = 5 * 1024 * 1024; // 5MB in bytes
+$upload_dir = "uploads/";
+$log_file = "logs/email_log.txt";
+
+// Session configuration for CSRF protection
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Create logs directory if it doesn't exist
+if (!is_dir("logs")) {
+    mkdir("logs", 0755, true);
+}
 
 // Function to sanitize input
 function sanitize_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
-    $data = htmlspecialchars($data);
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
     return $data;
 }
 
-// Function to validate email
+// Function to validate email - prevent header injection
 function validate_email($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL);
+    // First check if it's a valid email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+    
+    // Prevent email header injection - check for suspicious characters
+    if (preg_match('/[\r\n]/', $email)) {
+        return false;
+    }
+    
+    return true;
+}
+
+// Function to sanitize email headers
+function sanitize_email_header($header) {
+    // Remove any line breaks or tabs that could be used for header injection
+    $header = preg_replace('/[\r\n\t]/', '', $header);
+    return $header;
+}
+
+// Function to check rate limiting (simple IP-based)
+function check_rate_limit() {
+    $ip = sanitize_input($_SERVER['REMOTE_ADDR']);
+    $rate_limit_file = "logs/rate_limit_" . md5($ip) . ".txt";
+    
+    if (file_exists($rate_limit_file)) {
+        $last_submission_time = (int)file_get_contents($rate_limit_file);
+        $time_since_last = time() - $last_submission_time;
+        
+        // Allow only one submission per 60 seconds per IP
+        if ($time_since_last < 60) {
+            return false;
+        }
+    }
+    
+    // Update last submission time
+    file_put_contents($rate_limit_file, time());
+    
+    // Clean up old rate limit files (older than 1 hour)
+    $rate_limit_files = glob("logs/rate_limit_*.txt");
+    foreach ($rate_limit_files as $file) {
+        if (time() - filemtime($file) > 3600) {
+            unlink($file);
+        }
+    }
+    
+    return true;
+}
+
+// Function to validate CSRF token
+function validate_csrf_token($token) {
+    return isset($_SESSION['csrf_token']) && hash_equals($_SESSION['csrf_token'], $token);
+}
+
+// Function to generate CSRF token
+function generate_csrf_token() {
+    if (!isset($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+// Function to log email activity
+function log_email($form_type, $email, $success, $error_msg = '') {
+    $log_message = date('Y-m-d H:i:s') . " | ";
+    $log_message .= "Type: $form_type | ";
+    $log_message .= "Email: $email | ";
+    $log_message .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . " | ";
+    $log_message .= "Status: " . ($success ? "SUCCESS" : "FAILED") . " | ";
+    
+    if (!empty($error_msg)) {
+        $log_message .= "Error: $error_msg | ";
+    }
+    
+    $log_message .= "\n";
+    
+    error_log($log_message, 3, $log_file);
+}
+
+// Generate CSRF token for initial page load
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    header('Content-Type: application/json');
+    echo json_encode(["csrf_token" => generate_csrf_token()]);
+    exit;
 }
 
 // Handle Contato form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST["form_type"] == "contato") {
+    // Check rate limiting
+    if (!check_rate_limit()) {
+        http_response_code(429);
+        echo json_encode(["success" => false, "message" => "Muitas requisições. Tente novamente em alguns segundos."]);
+        exit;
+    }
+    
+    // Validate CSRF token
+    if (!isset($_POST["csrf_token"]) || !validate_csrf_token($_POST["csrf_token"])) {
+        log_email('contato', $_POST["email"] ?? 'unknown', false, 'Invalid CSRF token');
+        http_response_code(403);
+        echo json_encode(["success" => false, "message" => "Requisição inválida"]);
+        exit;
+    }
+    
+    // Check honeypot
+    if (!empty($_POST["website"] ?? '')) {
+        // Honeypot field filled, likely a bot
+        log_email('contato', $_POST["email"] ?? 'unknown', false, 'Honeypot triggered');
+        http_response_code(400);
+        echo json_encode(["success" => false, "message" => "Erro ao processar formulário"]);
+        exit;
+    }
+    
     $nome = sanitize_input($_POST["nome"] ?? "");
     $email = sanitize_input($_POST["email"] ?? "");
     $mensagem = sanitize_input($_POST["mensagem"] ?? "");
@@ -37,24 +156,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $errors[] = "Mensagem é obrigatória";
     }
     
+    // Check message length to prevent abuse
+    if (strlen($mensagem) > 5000) {
+        $errors[] = "Mensagem muito longa. Máximo de 5000 caracteres";
+    }
+    
     if (!empty($errors)) {
+        log_email('contato', $email, false, 'Validation failed: ' . implode(', ', $errors));
         http_response_code(400);
         echo json_encode(["success" => false, "errors" => $errors]);
         exit;
     }
     
-    // Prepare email
+    // Prepare email with proper header sanitization
     $assunto = "Novo Contato - " . $nome;
     $corpo_email = "Nome: " . $nome . "\n";
     $corpo_email .= "Email: " . $email . "\n";
+    $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
+    $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
     $corpo_email .= "Mensagem:\n" . $mensagem;
     
-    $headers = "From: " . $email . "\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
+    // Sanitize headers to prevent header injection
+    $headers = "From: " . sanitize_email_header($email) . "\r\n";
+    $headers .= "Reply-To: " . sanitize_email_header($email) . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     
     // Send email
-    if (mail($admin_email, $assunto, $corpo_email, $headers)) {
+    if (@mail($admin_email, $assunto, $corpo_email, $headers)) {
         // Send confirmation email to user
         $confirmacao_assunto = "Recebemos seu contato";
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
@@ -62,14 +191,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $confirmacao_corpo .= "Sua mensagem foi recebida e responderemos assim que possível.\n\n";
         $confirmacao_corpo .= "Atenciosamente,\nEquipe MT Engenharia";
         
-        $confirmacao_headers = "From: " . $admin_email . "\r\n";
+        $confirmacao_headers = "From: " . sanitize_email_header($admin_email) . "\r\n";
         $confirmacao_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $confirmacao_headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
         
-        mail($email, $confirmacao_assunto, $confirmacao_corpo, $confirmacao_headers);
+        @mail($email, $confirmacao_assunto, $confirmacao_corpo, $confirmacao_headers);
         
+        log_email('contato', $email, true);
         http_response_code(200);
         echo json_encode(["success" => true, "message" => "Email enviado com sucesso!"]);
     } else {
+        log_email('contato', $email, false, 'Mail function failed');
         http_response_code(500);
         echo json_encode(["success" => false, "message" => "Erro ao enviar email. Tente novamente mais tarde."]);
     }
@@ -78,6 +210,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
 
 // Handle Trabalhe Conosco form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST["form_type"] == "trabalhe") {
+    // Check rate limiting
+    if (!check_rate_limit()) {
+        http_response_code(429);
+        echo json_encode(["success" => false, "message" => "Muitas requisições. Tente novamente em alguns segundos."]);
+        exit;
+    }
+    
+    // Validate CSRF token
+    if (!isset($_POST["csrf_token"]) || !validate_csrf_token($_POST["csrf_token"])) {
+        log_email('trabalhe', $_POST["email"] ?? 'unknown', false, 'Invalid CSRF token');
+        http_response_code(403);
+        echo json_encode(["success" => false, "message" => "Requisição inválida"]);
+        exit;
+    }
+    
+    // Check honeypot
+    if (!empty($_POST["website"] ?? '')) {
+        // Honeypot field filled, likely a bot
+        log_email('trabalhe', $_POST["email"] ?? 'unknown', false, 'Honeypot triggered');
+        http_response_code(400);
+        echo json_encode(["success" => false, "message" => "Erro ao processar formulário"]);
+        exit;
+    }
+    
     $nome = sanitize_input($_POST["nome"] ?? "");
     $email = sanitize_input($_POST["email"] ?? "");
     $telefone = sanitize_input($_POST["telefone"] ?? "");
@@ -98,8 +254,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $errors[] = "Telefone é obrigatório";
     }
     
+    // Validate phone format (basic)
+    if (!preg_match('/^[0-9\s\(\)\-\+]+$/', $telefone) || strlen(preg_replace('/\D/', '', $telefone)) < 10) {
+        $errors[] = "Telefone inválido";
+    }
+    
     if (empty($cargo)) {
         $errors[] = "Cargo é obrigatório";
+    }
+    
+    // Validate cargo is from allowed list
+    $allowed_cargos = ['engenheiro', 'tecnico', 'operador', 'outro'];
+    if (!in_array($cargo, $allowed_cargos)) {
+        $errors[] = "Cargo inválido";
     }
     
     // Check if file was uploaded
@@ -117,30 +284,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         if ($_FILES["curriculo"]["size"] > $max_file_size) {
             $errors[] = "Arquivo muito grande. Máximo de 5MB";
         }
+        
+        // Validate file name
+        $file_name = $_FILES["curriculo"]["name"];
+        if (preg_match('/[^a-zA-Z0-9._\-]/', $file_name)) {
+            $errors[] = "Nome do arquivo contém caracteres inválidos";
+        }
     }
     
     if (!empty($errors)) {
+        log_email('trabalhe', $email, false, 'Validation failed: ' . implode(', ', $errors));
         http_response_code(400);
         echo json_encode(["success" => false, "errors" => $errors]);
         exit;
     }
     
     // Create uploads directory if it doesn't exist
-    $upload_dir = "uploads/";
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0755, true);
     }
     
-    // Process file upload
+    // Process file upload with secure naming
     $file_ext = pathinfo($_FILES["curriculo"]["name"], PATHINFO_EXTENSION);
-    $file_name = "curriculo_" . time() . "_" . $nome . "." . $file_ext;
+    $file_name = "curriculo_" . time() . "_" . md5($email) . "." . strtolower($file_ext);
     $file_path = $upload_dir . $file_name;
     
     if (!move_uploaded_file($_FILES["curriculo"]["tmp_name"], $file_path)) {
+        log_email('trabalhe', $email, false, 'File upload failed');
         http_response_code(500);
         echo json_encode(["success" => false, "message" => "Erro ao fazer upload do arquivo"]);
         exit;
     }
+    
+    // Make file readable but not executable
+    chmod($file_path, 0644);
     
     // Prepare email
     $assunto = "Nova Candidatura - " . $nome . " para " . $cargo;
@@ -148,14 +325,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $corpo_email .= "Email: " . $email . "\n";
     $corpo_email .= "Telefone: " . $telefone . "\n";
     $corpo_email .= "Cargo: " . $cargo . "\n";
+    $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
+    $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
     $corpo_email .= "Arquivo: " . $_FILES["curriculo"]["name"] . "\n";
     
-    $headers = "From: " . $email . "\r\n";
-    $headers .= "Reply-To: " . $email . "\r\n";
+    // Sanitize headers
+    $headers = "From: " . sanitize_email_header($email) . "\r\n";
+    $headers .= "Reply-To: " . sanitize_email_header($email) . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     
     // Send email
-    if (mail($admin_email, $assunto, $corpo_email, $headers)) {
+    if (@mail($admin_email, $assunto, $corpo_email, $headers)) {
         // Send confirmation email to user
         $confirmacao_assunto = "Recebemos sua candidatura";
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
@@ -163,14 +344,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $confirmacao_corpo .= "Sua candidatura foi recebida e analisaremos seu currículo em breve.\n\n";
         $confirmacao_corpo .= "Atenciosamente,\nEquipe MT Engenharia";
         
-        $confirmacao_headers = "From: " . $admin_email . "\r\n";
+        $confirmacao_headers = "From: " . sanitize_email_header($admin_email) . "\r\n";
         $confirmacao_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        $confirmacao_headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
         
-        mail($email, $confirmacao_assunto, $confirmacao_corpo, $confirmacao_headers);
+        @mail($email, $confirmacao_assunto, $confirmacao_corpo, $confirmacao_headers);
         
+        log_email('trabalhe', $email, true);
         http_response_code(200);
         echo json_encode(["success" => true, "message" => "Candidatura enviada com sucesso!"]);
     } else {
+        log_email('trabalhe', $email, false, 'Mail function failed');
         http_response_code(500);
         echo json_encode(["success" => false, "message" => "Erro ao enviar candidatura. Tente novamente mais tarde."]);
     }
