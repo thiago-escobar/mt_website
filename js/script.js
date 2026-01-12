@@ -1,17 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Fetch CSRF tokens for both forms
-    fetch('send_email.php', {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.csrf_token) {
-            document.getElementById('csrf_token_contato').value = data.csrf_token;
-            document.getElementById('csrf_token_trabalhe').value = data.csrf_token;
+    // Generate CSRF token on page load
+    function generateCSRFToken() {
+        // Create a random token (64 character hex string)
+        let token = '';
+        const chars = '0123456789abcdef';
+        for (let i = 0; i < 64; i++) {
+            token += chars.charAt(Math.floor(Math.random() * chars.length));
         }
-    })
-    .catch(error => console.error('Error fetching CSRF token:', error));
+        return token;
+    }
+    
+    // Set CSRF token for both forms
+    const csrfToken = generateCSRFToken();
+    const csrfTokenContato = document.getElementById('csrf_token_contato');
+    const csrfTokenTrabalhe = document.getElementById('csrf_token_trabalhe');
+    
+    if (csrfTokenContato) {
+        csrfTokenContato.value = csrfToken;
+    }
+    if (csrfTokenTrabalhe) {
+        csrfTokenTrabalhe.value = csrfToken;
+    }
     
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
