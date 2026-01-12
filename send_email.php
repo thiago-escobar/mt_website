@@ -89,6 +89,7 @@ function generate_csrf_token() {
 
 // Function to log email activity
 function log_email($form_type, $email, $success, $error_msg = '') {
+    global $log_file;
     $log_message = date('Y-m-d H:i:s') . " | ";
     $log_message .= "Type: $form_type | ";
     $log_message .= "Email: $email | ";
@@ -104,11 +105,9 @@ function log_email($form_type, $email, $success, $error_msg = '') {
     error_log($log_message, 3, $log_file);
 }
 
-// Generate CSRF token for initial page load
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
-    header('Content-Type: application/json');
-    echo json_encode(["csrf_token" => generate_csrf_token()]);
-    exit;
+// Store CSRF token from client in session for validation
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["csrf_token"])) {
+    $_SESSION['csrf_token'] = $_POST["csrf_token"];
 }
 
 // Handle Contato form submission
