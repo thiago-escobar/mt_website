@@ -68,4 +68,132 @@ document.addEventListener('DOMContentLoaded', function() {
         
         observer.observe(elemento);
     });
+    
+    // Contact form submission
+    const formContato = document.querySelector('form');
+    if (formContato) {
+        const btEnviarContato = document.getElementById('bt_enviar_contato');
+        
+        if (btEnviarContato) {
+            btEnviarContato.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const nome = document.getElementById('nome_contato').value;
+                const email = document.getElementById('email_contato').value;
+                const mensagem = document.getElementById('mensagem_contato').value;
+                
+                // Simple validation
+                if (!nome || !email || !mensagem) {
+                    alert('Por favor, preencha todos os campos');
+                    return;
+                }
+                
+                // Create FormData
+                const formData = new FormData();
+                formData.append('form_type', 'contato');
+                formData.append('nome', nome);
+                formData.append('email', email);
+                formData.append('mensagem', mensagem);
+                
+                // Disable button while sending
+                btEnviarContato.disabled = true;
+                const originalText = btEnviarContato.textContent;
+                btEnviarContato.textContent = 'Enviando...';
+                
+                // Send request
+                fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Email enviado com sucesso! Obrigado pelo contato.');
+                        // Reset form
+                        document.getElementById('nome_contato').value = '';
+                        document.getElementById('email_contato').value = '';
+                        document.getElementById('mensagem_contato').value = '';
+                    } else {
+                        alert('Erro: ' + (data.message || 'Não foi possível enviar o email'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Erro ao enviar o email. Tente novamente mais tarde.');
+                })
+                .finally(() => {
+                    // Re-enable button
+                    btEnviarContato.disabled = false;
+                    btEnviarContato.textContent = originalText;
+                });
+            });
+        }
+    }
+    
+    // Trabalhe Conosco form submission
+    const formTrabalhe = document.querySelectorAll('form')[1];
+    if (formTrabalhe) {
+        const btEnviarTrabalhe = document.getElementById('bt_enviar_trabalhe');
+        
+        if (btEnviarTrabalhe) {
+            btEnviarTrabalhe.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const nome = document.getElementById('nome_trabalhe').value;
+                const email = document.getElementById('email_trabalhe').value;
+                const telefone = document.getElementById('telefone_trabalhe').value;
+                const cargo = document.getElementById('cargo_trabalhe').value;
+                const curriculo = document.getElementById('curriculo_trabalhe').files[0];
+                
+                // Simple validation
+                if (!nome || !email || !telefone || !cargo || !curriculo) {
+                    alert('Por favor, preencha todos os campos');
+                    return;
+                }
+                
+                // Create FormData
+                const formData = new FormData();
+                formData.append('form_type', 'trabalhe');
+                formData.append('nome', nome);
+                formData.append('email', email);
+                formData.append('telefone', telefone);
+                formData.append('cargo', cargo);
+                formData.append('curriculo', curriculo);
+                
+                // Disable button while sending
+                btEnviarTrabalhe.disabled = true;
+                const originalText = btEnviarTrabalhe.textContent;
+                btEnviarTrabalhe.textContent = 'Enviando...';
+                
+                // Send request
+                fetch('send_email.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Candidatura enviada com sucesso! Obrigado pelo interesse.');
+                        // Reset form
+                        document.getElementById('nome_trabalhe').value = '';
+                        document.getElementById('email_trabalhe').value = '';
+                        document.getElementById('telefone_trabalhe').value = '';
+                        document.getElementById('cargo_trabalhe').value = '';
+                        document.getElementById('curriculo_trabalhe').value = '';
+                    } else {
+                        alert('Erro: ' + (data.message || 'Não foi possível enviar a candidatura'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Erro ao enviar a candidatura. Tente novamente mais tarde.');
+                })
+                .finally(() => {
+                    // Re-enable button
+                    btEnviarTrabalhe.disabled = false;
+                    btEnviarTrabalhe.textContent = originalText;
+                });
+            });
+        }
+    }
 });
