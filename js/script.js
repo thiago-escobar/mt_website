@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', function() {
         rodapeObserver.observe(rodape);
     }
     
-    const numerosContaveis = [712, 183, 528]; // Example target numbers
-    const elementosNumeros = [document.querySelector('#numero-contavel-1'), document.querySelector('#numero-contavel-2'), document.querySelector('#numero-contavel-3')];
+    const numerosContaveis = [35, 100, 150, 2500, 6000]; // Example target numbers
+    const elementosNumeros = [document.querySelector('#numero-contavel-1'), document.querySelector('#numero-contavel-2'), document.querySelector('#numero-contavel-3'), document.querySelector('#numero-contavel-4'), document.querySelector('#numero-contavel-5')];
     
     elementosNumeros.forEach((elemento, index) => {
         if (!elemento) return; // Skip if element doesn't exist
