@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Fetch CSRF tokens for both forms
+    fetch('send_email.php', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.csrf_token) {
+            document.getElementById('csrf_token_contato').value = data.csrf_token;
+            document.getElementById('csrf_token_trabalhe').value = data.csrf_token;
+        }
+    })
+    .catch(error => console.error('Error fetching CSRF token:', error));
+    
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
     const closeBtn = document.getElementById('close_modal_imagem');
@@ -70,17 +83,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Contact form submission
-    const formContato = document.querySelector('form');
+    const formContato = document.getElementById('form_contato');
     if (formContato) {
         const btEnviarContato = document.getElementById('bt_enviar_contato');
         
         if (btEnviarContato) {
-            btEnviarContato.addEventListener('click', function(e) {
+            formContato.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const nome = document.getElementById('nome_contato').value;
                 const email = document.getElementById('email_contato').value;
                 const mensagem = document.getElementById('mensagem_contato').value;
+                const csrf_token = document.getElementById('csrf_token_contato').value;
                 
                 // Simple validation
                 if (!nome || !email || !mensagem) {
@@ -94,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append('nome', nome);
                 formData.append('email', email);
                 formData.append('mensagem', mensagem);
+                formData.append('csrf_token', csrf_token);
                 
                 // Disable button while sending
                 btEnviarContato.disabled = true;
@@ -131,12 +146,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Trabalhe Conosco form submission
-    const formTrabalhe = document.querySelectorAll('form')[1];
+    const formTrabalhe = document.getElementById('form_trabalhe');
     if (formTrabalhe) {
         const btEnviarTrabalhe = document.getElementById('bt_enviar_trabalhe');
         
         if (btEnviarTrabalhe) {
-            btEnviarTrabalhe.addEventListener('click', function(e) {
+            formTrabalhe.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const nome = document.getElementById('nome_trabalhe').value;
@@ -144,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const telefone = document.getElementById('telefone_trabalhe').value;
                 const cargo = document.getElementById('cargo_trabalhe').value;
                 const curriculo = document.getElementById('curriculo_trabalhe').files[0];
+                const csrf_token = document.getElementById('csrf_token_trabalhe').value;
                 
                 // Simple validation
                 if (!nome || !email || !telefone || !cargo || !curriculo) {
@@ -159,6 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append('telefone', telefone);
                 formData.append('cargo', cargo);
                 formData.append('curriculo', curriculo);
+                formData.append('csrf_token', csrf_token);
                 
                 // Disable button while sending
                 btEnviarTrabalhe.disabled = true;
