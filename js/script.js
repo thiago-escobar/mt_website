@@ -30,28 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const conteudoDobra = decoracao.nextElementSibling;
             if (conteudoDobra && conteudoDobra.classList.contains('conteudo_dobra')) {
                 let height = window.getComputedStyle(conteudoDobra).getPropertyValue('height');
-                let width = window.getComputedStyle(conteudoDobra).getPropertyValue('width');
                 decoracao.style.height = height;
-                decoracao.querySelectorAll('.retangulo-branco-1, .retangulo-cinza-1, .retangulo-amarelo-1, .retangulo-branco-2, .retangulo-cinza-2, .retangulo-amarelo-2').forEach(rect => {
-                    rect.style.height = parseFloat(height) + 'px';/*parseInt(height)+" px";*/
-                    if(parseFloat(width)>2559){
-                        rect.style.width = (parseFloat(width)/1.5) + 'px';
-                    }else{
-                        if(parseFloat(width)>1439){
-                            rect.style.width = (parseFloat(width)/2) + 'px';
-                            
-                        }else{
-                            rect.style.width = parseFloat(width) + 'px';
-                            if(parseFloat(width)<400 || parseFloat(width)>767){
-                                rect.style.marginLeft = '-70%';
-                            }else{
-                                rect.style.marginLeft = '-50%';
-                            }
-                        }
-                    }
-                });
-                /*decoracao.style.height = conteudoDobra.offsetHeight + 'px';
-                decoracao.style.width = conteudoDobra.offsetWidth/3 + 'px';*/
             }
         });
     }
