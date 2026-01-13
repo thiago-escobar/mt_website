@@ -43,7 +43,7 @@ h1{
     color: #000;
 }
 .dobra-branca{
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #FFF;
     width: 100%;
     height: auto;
     color: #444;
@@ -249,27 +249,87 @@ h1{
     overflow-x:hidden;
     z-index: 1;
 }
-.retangulo-amarelo-1{
-    background-color: #FFCB05;
-    transform: skew(20deg);
-    margin-left: -50%;
-}
-.retangulo-branco-1{
-    background-color: #FFF;
-    transform: skew(20deg);
-    margin-left: -50%;
-}
-.retangulo-cinza-1{
-    background-color: #939598;
-    transform: skew(20deg);
-    margin-left: -50%;
-}
-.retangulo-amarelo-2{
-    background-color: #FFCB05;
-    transform: skew(-20deg);
-}
 .conteudo_dobra {
     padding: 2rem 2rem;
     position: relative;
     z-index: 2;
+}
+.retangulo-amarelo-1, .retangulo-amarelo-2, .retangulo-amarelo-3{
+    background-color: #FFCB05;
+}
+.retangulo-branco-1, .retangulo-branco-2, .retangulo-branco-3{
+    background-color: #FFF;
+}
+.retangulo-cinza-1, .retangulo-cinza-2, .retangulo-cinza-3{
+    background-color: #939598;
+}
+.retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    transform: skew(20deg);
+    width: 33%;
+    height: 100%;
+    margin-left: -25%;
+}
+.retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+    transform: skew(-20deg);
+    width: 33%;
+    height: 100%;
+    margin-left: 100%;
+}
+.retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+    transform: skew(-20deg);
+    width: 33%;
+    height: 100%;
+    margin-left: -25%;
+}
+@media (min-width: 1440px) and (max-width: 3839px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 15%;
+        margin-left: -15%;
+    }
+}
+@media (min-width: 1024px) and (max-width: 1339px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 20%;
+        margin-left: -20%;
+    }
+}
+@media (min-width: 992px) and (max-width: 1021px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 25%;
+        margin-left: -15%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 30%;
+        margin-left: -20%;
+    }
+}
+@media (min-width: 425px) and (max-width: 767px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 35%;
+        margin-left: -30%;
+    }
+    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+        width: 75%;
+        margin-left: 105%;
+    }
+    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+        width: 80%;
+        margin-left: -80%;
+    }
+}
+@media (max-width: 424px) {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+        width: 75%;
+        margin-left: -85%;
+    }
+    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+        width: 110%;
+        margin-left: 130%;
+    }
+    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+        width: 150%;
+        margin-left: -150%;
+    }
 }
