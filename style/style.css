@@ -76,10 +76,6 @@ h1{
     background-repeat: no-repeat;
     background-size: cover;
 }
-.espaco-entre-dobras{
-    height: 0.1rem;
-    width: 100%;
-}
 .rodape{
     background-color: rgba(0,0,0,0.75);
     padding: 2rem 0;
