@@ -116,6 +116,9 @@
         </div>
     </div>
     <div class="dobra-amarela" id="mosaico_imagens">
+        <div class="decoracao_dobra">
+            <div class="retangulo-cinza-2"></div>
+        </div>
         <div class="container blank-0 conteudo_dobra">
                 <div class="col-12 col-interna">
                     <h2>Lorem Ipsum</h2>
@@ -203,27 +206,37 @@
     </div>
     <div class="dobra-amarela">
         <div class="container blank-0 conteudo_dobra">
-            <div class="col-12 col-interna mb-3">
-                <h2>Contato</h2>
+            <div class="row">
+                <div class="col-12 col-interna mb-3">
+                    <h2>Contato</h2>
+                </div>
             </div>
             <form id="form_contato">
-                <input type="hidden" id="csrf_token_contato" name="csrf_token" value="">
-                <input type="hidden" name="form_type" value="contato">
-                <!-- Honeypot field -->
-                <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-                <div class="col-12 col-md-6 col-interna mb-3">
-                    <label for="nome_contato" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" id="nome_contato" name="nome" required>
+                <div class="row">
+                    <input type="hidden" id="csrf_token_contato" name="csrf_token" value="">
+                    <input type="hidden" name="form_type" value="contato">
+                    <!-- Honeypot field -->
+                    <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+                    <div class="col-12 col-md-6 col-interna mb-3">
+                        <label for="nome_contato" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="nome_contato" name="nome" required>
+                    </div>
+                    <div class="col-12 col-md-6 col-interna mb-3">
+                        <label for="email_contato" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email_contato" name="email" required>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 col-interna mb-3">
-                    <label for="email_contato" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email_contato" name="email" required>
+                <div class="row">
+                    <div class="col-12 col-interna mb-4">
+                        <label for="mensagem_contato" class="form-label">Mensagem:</label>
+                        <textarea class="form-control" id="mensagem_contato" name="mensagem" rows="4" required></textarea>
+                    </div>
                 </div>
-                <div class="mb-4">
-                    <label for="mensagem_contato" class="form-label">Mensagem:</label>
-                    <textarea class="form-control" id="mensagem_contato" name="mensagem" rows="4" required></textarea>
+                <div class="row">
+                    <div class="col-12 col-interna">
+                        <button type="submit" class="btn btn-primary" id="bt_enviar_contato">Enviar</button>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary" id="bt_enviar_contato">Enviar</button>
             </form>
         </div>
     </div>
@@ -233,37 +246,47 @@
                 <h2>Trabalhe Conosco</h2>
             </div>
             <form id="form_trabalhe">
-                <input type="hidden" id="csrf_token_trabalhe" name="csrf_token" value="">
-                <input type="hidden" name="form_type" value="trabalhe">
-                <!-- Honeypot field -->
-                <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
-                <div class="col-12 col-md-6 col-interna mb-3 pe-md-2">
-                    <label for="nome_trabalhe" class="form-label">Nome:</label>
-                    <input type="text" class="form-control" id="nome_trabalhe" name="nome" required>
+                <div class="row">
+                    <input type="hidden" id="csrf_token_trabalhe" name="csrf_token" value="">
+                    <input type="hidden" name="form_type" value="trabalhe">
+                    <!-- Honeypot field -->
+                    <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+                    <div class="col-12 col-md-6 col-interna mb-3 pe-md-2">
+                        <label for="nome_trabalhe" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="nome_trabalhe" name="nome" required>
+                    </div>
+                    <div class="col-12 col-md-6 col-interna mb-3">
+                        <label for="email_trabalhe" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email_trabalhe" name="email" required>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 col-interna mb-3">
-                    <label for="email_trabalhe" class="form-label">Email:</label>
-                    <input type="email" class="form-control" id="email_trabalhe" name="email" required>
+                <div class="row">
+                    <div class="col-12 col-md-6 mb-3 pe-md-2">
+                        <label for="telefone_trabalhe" class="form-label">Telefone:</label>
+                        <input type="tel" class="form-control" id="telefone_trabalhe" name="telefone" required>
+                    </div>
+                    <div class="col-12 col-md-6 mb-3">
+                        <label for="cargo_trabalhe" class="form-label">Cargo:</label>
+                        <select class="form-select" id="cargo_trabalhe" name="cargo" required>
+                            <option value="" disabled selected>Selecione o cargo</option>
+                            <option value="engenheiro">Engenheiro</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="operador">Operador</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 col-interna mb-3 pe-md-2">
-                    <label for="telefone_trabalhe" class="form-label">Telefone:</label>
-                    <input type="tel" class="form-control" id="telefone_trabalhe" name="telefone" required>
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <label for="curriculo_trabalhe" class="form-label">Currículo:</label>
+                        <input type="file" class="form-control" id="curriculo_trabalhe" name="curriculo" accept=".pdf,.doc,.docx" required>
+                    </div>
                 </div>
-                <div class="col-12 col-md-6 col-interna mb-3">
-                    <label for="cargo_trabalhe" class="form-label">Cargo:</label>
-                    <select class="form-select" id="cargo_trabalhe" name="cargo" required>
-                        <option value="" disabled selected>Selecione o cargo</option>
-                        <option value="engenheiro">Engenheiro</option>
-                        <option value="tecnico">Técnico</option>
-                        <option value="operador">Operador</option>
-                        <option value="outro">Outro</option>
-                    </select>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary" id="bt_enviar_trabalhe">Enviar</button>
+                    </div>
                 </div>
-                <div class="col-12 col-interna mb-4">
-                    <label for="curriculo_trabalhe" class="form-label">Currículo:</label>
-                    <input type="file" class="form-control" id="curriculo_trabalhe" name="curriculo" accept=".pdf,.doc,.docx" required>
-                </div>
-                <button type="submit" class="btn btn-primary" id="bt_enviar_trabalhe">Enviar</button>
             </form>
         </div>
     </div>
@@ -278,7 +301,7 @@
     </a>
     <div id="modal_imagem">
         <div id="img_modal_container">
-            <img class="modal-conteudo" id="img_modal" src="img/caminhao.jpg" alt="Imagem Ampliada" />
+            <img class="modal-conteudo" id="img_modal" alt="Imagem Ampliada" />
             <i id="close_modal_imagem" class="bi bi-x"></i>
         </div>
     </div>

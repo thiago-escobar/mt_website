@@ -181,6 +181,9 @@ h1{
 .destaque-branco{
     color: #FFF;
 }
+form{
+    margin-bottom: 0rem;
+}
 #bt_enviar_contato{
     float: right;
     background-color: #444;
@@ -191,11 +194,6 @@ h1{
     background-color: #FFCB05;
     color: #000;
     border-color: #000;
-}
-@media (min-width: 768px) {
-    #nome_contato{
-        width: 98% !important;
-    }
 }
 .decoracao_dobra {
     position: absolute;
@@ -209,7 +207,7 @@ h1{
 .imagem-fundo-dobra {
     height: 100%;
     filter: grayscale(100%);
-    opacity: 0.075;
+    opacity: 0.1;
 }
 .conteudo_dobra {
     padding: 2rem 2rem;
