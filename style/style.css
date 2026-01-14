@@ -225,6 +225,9 @@ h1{
     margin: 0 1rem;
     text-align: center;
 }
+.destaque-branco{
+    color: #FFF;
+}
 #bt_enviar_contato{
     float: right;
     background-color: #444;
@@ -254,13 +257,13 @@ h1{
     position: relative;
     z-index: 2;
 }
-.retangulo-amarelo-1, .retangulo-amarelo-2, .retangulo-amarelo-3{
+.retangulo-amarelo-1, .retangulo-amarelo-2, .retangulo-amarelo-3, .retangulo-amarelo-4{
     background-color: #FFCB05;
 }
-.retangulo-branco-1, .retangulo-branco-2, .retangulo-branco-3{
+.retangulo-branco-1, .retangulo-branco-2, .retangulo-branco-3, .retangulo-branco-4{
     background-color: #FFF;
 }
-.retangulo-cinza-1, .retangulo-cinza-2, .retangulo-cinza-3{
+.retangulo-cinza-1, .retangulo-cinza-2, .retangulo-cinza-3, .retangulo-cinza-4{
     background-color: #939598;
 }
 .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
@@ -280,6 +283,12 @@ h1{
     width: 33%;
     height: 100%;
     margin-left: -25%;
+}
+.retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+    transform: skew(20deg);
+    width: 33%;
+    height: 100%;
+    margin-left: 97%;
 }
 @media (min-width: 1440px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
@@ -318,6 +327,10 @@ h1{
         width: 80%;
         margin-left: -80%;
     }
+    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+        width: 90%;
+        margin-left: 120%;
+    }
 }
 @media (max-width: 424px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
@@ -331,5 +344,9 @@ h1{
     .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
         width: 150%;
         margin-left: -150%;
+    }
+    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+        width: 110%;
+        margin-left: 130%;
     }
 }
