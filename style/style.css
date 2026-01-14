@@ -76,6 +76,10 @@ h1{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.espaco-entre-dobras{
+    height: 0.1rem;
+    width: 100%;
+}
 .rodape{
     background-color: rgba(0,0,0,0.75);
     padding: 2rem 0;
@@ -199,7 +203,7 @@ form{
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow-x:hidden;
+    overflow:hidden;
     z-index: 1;
     display: flex;
     flex-direction: column;
@@ -232,25 +236,25 @@ form{
 .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
     transform: skew(20deg);
     width: 33%;
-    height: 100%;
+    height: 101%;
     margin-left: -25%;
 }
 .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
     transform: skew(-20deg);
     width: 33%;
-    height: 100%;
+    height: 101%;
     margin-left: 100%;
 }
 .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
     transform: skew(-20deg);
     width: 33%;
-    height: 100%;
+    height: 101%;
     margin-left: -25%;
 }
 .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
     transform: skew(20deg);
     width: 33%;
-    height: 100%;
+    height: 101%;
     margin-left: 97%;
 }
 @media (min-width: 1440px) and (max-width: 3839px) {
