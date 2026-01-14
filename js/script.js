@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Match height and width of decoracao_dobra to conteudo_dobra
-    function matchDecoraoHeightsAndWidth() {
+    function matchDecoraoHeights() {
         const decoracaoDobras = document.querySelectorAll('.decoracao_dobra');
         decoracaoDobras.forEach(decoracao => {
             const conteudoDobra = decoracao.nextElementSibling;
@@ -33,13 +33,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 decoracao.style.height = height;
             }
         });
+        const imagensFundo = document.querySelectorAll('.imagem-fundo-dobra');
+        imagensFundo.forEach(imagem => {
+            const urlIimagem = imagem.getAttribute('data-foto');
+            imagem.style.backgroundImage = `url(${urlIimagem})`;
+            imagem.style.backgroundSize = 'cover';
+            imagem.style.backgroundPosition = 'center';
+        });
     }
     
     // Call on load
-    matchDecoraoHeightsAndWidth();
+    matchDecoraoHeights();
     
     // Call again on window resize
-    window.addEventListener('resize', matchDecoraoHeightsAndWidth);
+    window.addEventListener('resize', matchDecoraoHeights);
     
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');

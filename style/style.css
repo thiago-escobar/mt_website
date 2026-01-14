@@ -254,6 +254,11 @@ h1{
     display: flex;
     flex-direction: column;
 }
+.imagem-fundo-dobra {
+    height: 100%;
+    filter: grayscale(100%);
+    opacity: 0.15;
+}
 .conteudo_dobra {
     padding: 2rem 2rem;
     position: relative;
@@ -324,8 +329,8 @@ h1{
 }
 @media (min-width: 425px) and (max-width: 767px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
-        width: 35%;
-        margin-left: -30%;
+        width: 60%;
+        margin-left: -60%;
     }
     .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
         width: 75%;
