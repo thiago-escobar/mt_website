@@ -48,6 +48,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call again on window resize
     window.addEventListener('resize', matchDecoraoHeights);
     
+    const parallaxDivs = document.querySelectorAll('.dobra-parallax');
+    parallaxDivs.forEach(div => {
+        const urlIimagem = div.getAttribute('data-foto');
+        div.style.backgroundImage = `url(${urlIimagem})`;
+        div.style.backgroundSize = 'cover';
+        div.style.backgroundPosition = 'center';
+        div.style.backgroundAttachment = 'fixed';
+    });
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
     const closeBtn = document.getElementById('close_modal_imagem');

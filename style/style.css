@@ -69,55 +69,8 @@ h1{
 .dobra-cinza .destaque{
     font-weight: bold;
 }
-.dobra-foto{
-    background-color: #939598;
-    background-image: url('../img/Slide4.PNG');
-    width: 100%;
-    height: auto;
-    color: #222;
-    overflow: hidden;
-    min-height: 550px; 
-    background-attachment: scroll;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.dobra-foto h2{
-    color: #FFCB05;
-}
-.dobra-foto .destaque{
-    font-weight: bold;
-}
-.dobra-foto-2{
-    background-color: #939598;
-    background-image: url('../img/Slide8.PNG');
-    width: 100%;
-    height: auto;
-    color: #222;
-    overflow: hidden;
-    min-height: 550px; 
-    background-attachment: scroll;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.dobra-foto-2 h2{
-    color: #FFCB05;
-}
-.dobra-foto-2 .destaque{
-    font-weight: bold;
-}
 .dobra-parallax{
-    background-image: url('../img/escavadeira.jpg');
     min-height: 550px; 
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.dobra-parallax-2{
-    background-image: url('../img/caminhao.jpg');
-    min-height: 400px; 
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -220,7 +173,7 @@ h1{
     color: #FFCB05
 }
 .numero-contavel p{
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: normal;
     margin: 0 1rem;
     text-align: center;
@@ -244,7 +197,6 @@ h1{
         width: 98% !important;
     }
 }
-
 .decoracao_dobra {
     position: absolute;
     width: 100%;
@@ -257,7 +209,7 @@ h1{
 .imagem-fundo-dobra {
     height: 100%;
     filter: grayscale(100%);
-    opacity: 0.15;
+    opacity: 0.075;
 }
 .conteudo_dobra {
     padding: 2rem 2rem;
