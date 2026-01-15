@@ -35,10 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         const imagensFundo = document.querySelectorAll('.imagem-fundo-dobra');
         imagensFundo.forEach(imagem => {
+            if (imagem.classList.contains('dobra-parallax')) return;
             const urlIimagem = imagem.getAttribute('data-foto');
             imagem.style.backgroundImage = `url(${urlIimagem})`;
             imagem.style.backgroundSize = 'cover';
             imagem.style.backgroundPosition = 'center';
+        });
+        const imagensDentroDobraParallax = document.querySelectorAll('.dobra-parallax img');
+        imagensDentroDobraParallax.forEach(imagem => {
+            imagem.parentElement.style.position = 'relative';
+            imagem.style.position = 'absolute';
+            imagem.style.top = '50%';
+            imagem.style.left = '50%';
+            imagem.style.transform = 'translate(-50%, -50%)';
+            imagem.style.marginTop = '0';
         });
     }
     
@@ -48,14 +58,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Call again on window resize
     window.addEventListener('resize', matchDecoraoHeights);
     
-    const parallaxDivs = document.querySelectorAll('.dobra-parallax');
-    parallaxDivs.forEach(div => {
-        const urlIimagem = div.getAttribute('data-foto');
-        div.style.backgroundImage = `url(${urlIimagem})`;
-        div.style.backgroundSize = 'cover';
-        div.style.backgroundPosition = 'center';
-        div.style.backgroundAttachment = 'fixed';
-    });
+    function adjustParallax() {
+        const parallaxDivs = document.querySelectorAll('.dobra-parallax');
+        parallaxDivs.forEach(div => {
+            const urlIimagem = div.getAttribute('data-foto');
+            const imgInterna = div.querySelector('img');
+            
+            if (imgInterna) {
+                const urlImgInterna = imgInterna.src;
+                const size = window.innerWidth < 768 ? '33%' : '15%';
+                div.style.setProperty('background-image', `url("${urlImgInterna}"), url("${urlIimagem}")`, 'important');
+                div.style.setProperty('background-size', `${size} auto, cover`, 'important');
+                div.style.setProperty('background-position', 'center center, center center', 'important');
+                div.style.setProperty('background-attachment', 'scroll, fixed', 'important');
+                div.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
+                imgInterna.style.display = 'none';
+            } else {
+                div.style.backgroundImage = `url(${urlIimagem})`;
+                div.style.backgroundSize = 'cover';
+                div.style.backgroundPosition = 'center';
+                div.style.backgroundAttachment = 'fixed';
+            }
+        });
+    }
+    adjustParallax();
+    window.addEventListener('resize', adjustParallax);
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
     const closeBtn = document.getElementById('close_modal_imagem');
