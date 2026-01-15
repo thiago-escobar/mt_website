@@ -92,6 +92,22 @@ h1{
     height: auto;
     color: #DDD;
     overflow: hidden;
+    font-size: 0.75rem;
+}
+.rodape a{
+    color: #FFCB05;
+    text-decoration: none;
+    text-decoration: underline;
+}
+.rodape p{
+    margin-bottom: 0;
+    font-size: 0.75rem;
+}
+.rodape i{
+    margin-right: 0.5rem
+}
+.list-unstyled{
+    margin-bottom: 0px;
 }
 .col-interna{
     float: left;
@@ -262,31 +278,34 @@ form{
     height: 101%;
     margin-left: 97%;
 }
-@media (min-width: 1440px) and (max-width: 3839px) {
+@media (min-width: 1441px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 15%;
         margin-left: -15%;
     }
 }
-@media (min-width: 1024px) and (max-width: 1339px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 20%;
         margin-left: -20%;
     }
 }
-@media (min-width: 992px) and (max-width: 1021px) {
+@media (min-width: 993px) and (max-width: 1024px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 25%;
         margin-left: -15%;
     }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 769px) and (max-width: 992px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 30%;
         margin-left: -20%;
     }
+    .rodape{
+        font-size: 0.75rem;
+    }
 }
-@media (min-width: 425px) and (max-width: 767px) {
+@media (min-width: 426px) and (max-width: 768px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 60%;
         margin-left: -60%;
@@ -303,8 +322,18 @@ form{
         width: 90%;
         margin-left: 120%;
     }
+    .rodape{
+        padding: 0rem;
+        font-size: 0.75rem;
+    }
+    .rodape li{
+        margin-bottom: 0.5rem;
+    }
+    .logo-rodape{
+        display:none;
+    }
 }
-@media (max-width: 424px) {
+@media (max-width: 425px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 75%;
         margin-left: -85%;
@@ -320,5 +349,22 @@ form{
     .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
         width: 110%;
         margin-left: 130%;
+    }
+    .rodape{
+        padding: 0rem;
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    .rodape li{
+        margin-bottom: 0.5rem;
+    }
+    .rodape i{
+        display: none;
+    }
+    .rodape p{
+        font-size: 0.6rem;
+    }
+    .logo-rodape{
+        display:none;
     }
 }
