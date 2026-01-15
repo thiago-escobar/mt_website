@@ -83,6 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     adjustParallax();
     window.addEventListener('resize', adjustParallax);
+
+    // Recalculate layout after all images are fully loaded
+    window.addEventListener('load', function() {
+        matchDecoraoHeights();
+        adjustParallax();
+    });
+
     // Image modal functionality
     const modal = document.getElementById('modal_imagem');
     const closeBtn = document.getElementById('close_modal_imagem');
