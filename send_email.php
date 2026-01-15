@@ -168,12 +168,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     }
     
     // Prepare email with proper header sanitization
-    $assunto = "Novo Contato - " . $nome;
-    $corpo_email = "Nome: " . $nome . "\n";
+    $assunto = "Novo Contato - " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8');
+    $corpo_email = "Nome: " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . "\n";
     $corpo_email .= "Email: " . $email . "\n";
     $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
     $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
-    $corpo_email .= "Mensagem:\n" . $mensagem;
+    $corpo_email .= "Mensagem:\n" . html_entity_decode($mensagem, ENT_QUOTES, 'UTF-8');
     
     // Sanitize headers to prevent header injection
     $headers = "From: " . sanitize_email_header($email) . "\r\n";
@@ -305,7 +305,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     
     // Process file upload with secure naming
     $file_ext = pathinfo($_FILES["curriculo"]["name"], PATHINFO_EXTENSION);
-    $file_name = "curriculo_" . time() . "_" . md5($email) . "." . strtolower($file_ext);
+    $file_name = "curriculo_" . time() . "_" . bin2hex(random_bytes(8)) . "." . strtolower($file_ext);
     $file_path = $upload_dir . $file_name;
     
     if (!move_uploaded_file($_FILES["curriculo"]["tmp_name"], $file_path)) {
@@ -319,11 +319,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     chmod($file_path, 0644);
     
     // Prepare email
-    $assunto = "Nova Candidatura - " . $nome . " para " . $cargo;
-    $corpo_email = "Nome: " . $nome . "\n";
+    $assunto = "Nova Candidatura - " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . " para " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8');
+    $corpo_email = "Nome: " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . "\n";
     $corpo_email .= "Email: " . $email . "\n";
     $corpo_email .= "Telefone: " . $telefone . "\n";
-    $corpo_email .= "Cargo: " . $cargo . "\n";
+    $corpo_email .= "Cargo: " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8') . "\n";
     $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
     $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
     $corpo_email .= "Arquivo: " . $_FILES["curriculo"]["name"] . "\n";

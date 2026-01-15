@@ -76,6 +76,15 @@ h1{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.dobra-parallax img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -130px;
+    margin-left: -91.5px;
+    height: 155px;
+    width: 183px;
+}
 .rodape{
     background-color: rgba(0,0,0,0.75);
     padding: 2rem 0;
