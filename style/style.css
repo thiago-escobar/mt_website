@@ -216,7 +216,7 @@ form{
 .imagem-fundo-dobra {
     height: 100%;
     filter: grayscale(100%);
-    opacity: 0.1;
+    opacity: 0.15;
 }
 .conteudo_dobra {
     padding: 2rem 2rem;
