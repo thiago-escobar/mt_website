@@ -6,7 +6,7 @@ body{
     width: 100%;
 }
 h1{
-    color: #000;
+    color: #FFF;
 }
 .menu-topo{
     background-color: #fff;
@@ -280,6 +280,17 @@ form{
 }
 .box-sede{
     text-align: center;
+    padding: 1rem;
+    background-color: #939598;
+    color: #FFF
+}
+.box-sede .destaque{
+    color: #FFCB05;
+    font-weight: bold;
+}
+.box-sede img{
+    height: 64px;
+    width: auto;
 }
 @media (min-width: 1441px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
