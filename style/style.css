@@ -235,7 +235,7 @@ form{
     opacity: 0.15;
 }
 .conteudo_dobra {
-    padding: 2rem 2rem;
+    padding: 2rem 1rem;
     position: relative;
     z-index: 2;
 }
