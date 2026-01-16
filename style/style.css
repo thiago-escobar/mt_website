@@ -278,6 +278,9 @@ form{
     height: 101%;
     margin-left: 97%;
 }
+.box-sede{
+    text-align: center;
+}
 @media (min-width: 1441px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
         width: 15%;
