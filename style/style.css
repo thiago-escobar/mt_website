@@ -8,6 +8,9 @@ body{
 h1{
     color: #FFF;
 }
+h1, h2 {
+  text-transform: uppercase;
+}
 .menu-topo{
     background-color: #fff;
     padding: 1rem 0 1.5rem 0;
@@ -328,8 +331,8 @@ form{
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
         100% 0%,     /* Topo Direita */
-        100% 60%,    /* Início do corte na lateral direita */
-        90% 100%,    /* Fim do corte na base inferior */
+        100% 70%,    /* Início do corte na lateral direita */
+        95% 100%,    /* Fim do corte na base inferior */
         0% 100%      /* Base Esquerda */
     );
 }
@@ -337,6 +340,32 @@ form{
     filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(0%);
     height: 52px;
     width: auto;
+}
+.box-areas-licenciadas{
+    padding: 1rem;
+    background-color: #FFCB05;
+    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
+    clip-path: polygon(
+        0% 0%,       /* Topo Esquerda */
+        100% 0%,     /* Topo Direita */
+        100% 70%,    /* Início do corte na lateral direita */
+        95% 100%,    /* Fim do corte na base inferior */
+        0% 100%      /* Base Esquerda */
+    );
+}
+.box-areas-licenciadas img{
+    filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(50%);
+    height: 2rem;
+    width: auto;
+    float: left;
+    margin-right: 1rem;
+}
+.box-areas-licenciadas p{
+    margin-bottom: 0rem;
+    margin-top: 0.25rem;
+}
+.box-areas-licenciadas .titulos-box{
+    font-weight: bold;
 }
 @media (min-width: 1441px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
