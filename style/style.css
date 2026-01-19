@@ -282,7 +282,15 @@ form{
     text-align: center;
     padding: 1rem;
     background-color: #FFCB05;
-    color: #000
+    color: #000;
+    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
+    clip-path: polygon(
+        0% 0%,       /* Topo Esquerda */
+        100% 0%,     /* Topo Direita */
+        100% 60%,    /* Início do corte na lateral direita */
+        90% 100%,    /* Fim do corte na base inferior */
+        0% 100%      /* Base Esquerda */
+    );
 }
 .box-matos-teixeira p{
     margin-bottom: 0rem;
@@ -291,7 +299,15 @@ form{
     text-align: center;
     padding: 1rem;
     background-color: #939598;
-    color: #FFF
+    color: #FFF;
+    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
+    clip-path: polygon(
+        0% 0%,       /* Topo Esquerda */
+        100% 0%,     /* Topo Direita */
+        100% 60%,    /* Início do corte na lateral direita */
+        90% 100%,    /* Fim do corte na base inferior */
+        0% 100%      /* Base Esquerda */
+    );
 }
 .box-sede .destaque{
     color: #FFCB05;
@@ -299,6 +315,27 @@ form{
 }
 .box-sede img{
     height: 64px;
+    width: auto;
+}
+.box-atuacao{
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    color: #939598;
+    font-weight: bold;
+    font-size: 1.5rem;
+    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
+    clip-path: polygon(
+        0% 0%,       /* Topo Esquerda */
+        100% 0%,     /* Topo Direita */
+        100% 60%,    /* Início do corte na lateral direita */
+        90% 100%,    /* Fim do corte na base inferior */
+        0% 100%      /* Base Esquerda */
+    );
+}
+.box-atuacao img{
+    filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(0%);
+    height: 52px;
     width: auto;
 }
 @media (min-width: 1441px) and (max-width: 3839px) {
