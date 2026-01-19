@@ -278,6 +278,15 @@ form{
     height: 101%;
     margin-left: 97%;
 }
+.box-matos-teixeira{
+    text-align: center;
+    padding: 1rem;
+    background-color: #FFCB05;
+    color: #000
+}
+.box-matos-teixeira p{
+    margin-bottom: 0rem;
+}
 .box-sede{
     text-align: center;
     padding: 1rem;
