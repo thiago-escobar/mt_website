@@ -76,7 +76,11 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 div.style.backgroundImage = `url(${urlIimagem})`;
                 div.style.backgroundSize = 'cover';
-                div.style.backgroundPosition = 'center';
+                if(div.getAttribute('data-position')) {
+                    div.style.backgroundPosition = div.getAttribute('data-position');
+                } else {
+                    div.style.backgroundPosition = 'center center';
+                }
                 div.style.backgroundAttachment = 'fixed';
             }
         });
