@@ -63,11 +63,13 @@ h1, h2 {
     background-color: #939598;
     width: 100%;
     height: auto;
-    color: #222;
+    /*color: #222;*/
+    color: #FFF;
     overflow: hidden;
 }
 .dobra-cinza h2{
-    color: #000;
+    /*color: #000;*/
+    color: #FFF;
 }
 .dobra-cinza .destaque{
     font-weight: bold;
@@ -352,6 +354,7 @@ form{
         95% 100%,    /* Fim do corte na base inferior */
         0% 100%      /* Base Esquerda */
     );
+    color: #444;
 }
 .box-areas-licenciadas img{
     filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(50%);
