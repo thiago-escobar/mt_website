@@ -163,6 +163,20 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(elemento);
     });
     
+    // Helper function to show Bootstrap alerts
+    function showBootstrapAlert(form, message, type) {
+        const existingAlert = form.querySelector('.alert');
+        if (existingAlert) {
+            existingAlert.remove();
+        }
+        
+        const alertDiv = document.createElement('div');
+        alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+        alertDiv.role = 'alert';
+        alertDiv.innerHTML = `${message}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>`;
+        form.prepend(alertDiv);
+    }
+    
     // Contact form submission
     const formContato = document.getElementById('form_contato');
     if (formContato) {
@@ -179,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Simple validation
                 if (!nome || !email || !mensagem) {
-                    alert('Por favor, preencha todos os campos');
+                    showBootstrapAlert(formContato, 'Por favor, preencha todos os campos', 'warning');
                     return;
                 }
                 
@@ -204,18 +218,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Email enviado com sucesso! Obrigado pelo contato.');
+                        showBootstrapAlert(formContato, 'Email enviado com sucesso! Obrigado pelo contato.', 'success');
                         // Reset form
                         document.getElementById('nome_contato').value = '';
                         document.getElementById('email_contato').value = '';
                         document.getElementById('mensagem_contato').value = '';
                     } else {
-                        alert('Erro: ' + (data.message || 'Não foi possível enviar o email'));
+                        showBootstrapAlert(formContato, 'Erro: ' + (data.message || 'Não foi possível enviar o email'), 'danger');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Erro ao enviar o email. Tente novamente mais tarde.');
+                    showBootstrapAlert(formContato, 'Erro ao enviar o email. Tente novamente mais tarde.', 'danger');
                 })
                 .finally(() => {
                     // Re-enable button
@@ -244,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Simple validation
                 if (!nome || !email || !telefone || !cargo || !curriculo) {
-                    alert('Por favor, preencha todos os campos');
+                    showBootstrapAlert(formTrabalhe, 'Por favor, preencha todos os campos', 'warning');
                     return;
                 }
                 
@@ -271,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        alert('Candidatura enviada com sucesso! Obrigado pelo interesse.');
+                        showBootstrapAlert(formTrabalhe, 'Candidatura enviada com sucesso! Obrigado pelo interesse.', 'success');
                         // Reset form
                         document.getElementById('nome_trabalhe').value = '';
                         document.getElementById('email_trabalhe').value = '';
@@ -279,12 +293,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById('cargo_trabalhe').value = '';
                         document.getElementById('curriculo_trabalhe').value = '';
                     } else {
-                        alert('Erro: ' + (data.message || 'Não foi possível enviar a candidatura.'));
+                        showBootstrapAlert(formTrabalhe, 'Erro: ' + (data.message || 'Não foi possível enviar a candidatura.'), 'danger');
                     }
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Erro ao enviar a candidatura. Tente novamente mais tarde.');
+                    showBootstrapAlert(formTrabalhe, 'Erro ao enviar a candidatura. Tente novamente mais tarde.', 'danger');
                 })
                 .finally(() => {
                     // Re-enable button

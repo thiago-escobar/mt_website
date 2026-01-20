@@ -389,6 +389,10 @@ form{
     border: 3px solid #444;
     padding: 0.25rem;
 }
+.alert{
+    float: left;
+    width: 100%;
+}
 @media (min-width: 1441px) and (max-width: 3839px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 15%;

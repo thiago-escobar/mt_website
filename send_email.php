@@ -283,12 +283,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         if ($_FILES["curriculo"]["size"] > $max_file_size) {
             $errors[] = "Arquivo muito grande. Máximo de 5MB";
         }
-        
-        // Validate file name
-        $file_name = $_FILES["curriculo"]["name"];
-        if (preg_match('/[^a-zA-Z0-9._\-]/', $file_name)) {
-            $errors[] = "Nome do arquivo contém caracteres inválidos";
-        }
     }
     
     if (!empty($errors)) {
