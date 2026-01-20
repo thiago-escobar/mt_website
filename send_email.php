@@ -305,7 +305,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     
     // Process file upload with secure naming
     $file_ext = pathinfo($_FILES["curriculo"]["name"], PATHINFO_EXTENSION);
-    $file_name = "curriculo_" . time() . "_" . bin2hex(random_bytes(8)) . "." . strtolower($file_ext);
+    $file_name = preg_replace('/[^a-zA-Z0-9._\-]/', '', pathinfo($_FILES["curriculo"]["name"], PATHINFO_FILENAME)) . "_" . time() . "." . strtolower($file_ext);
     $file_path = $upload_dir . $file_name;
     
     if (!move_uploaded_file($_FILES["curriculo"]["tmp_name"], $file_path)) {
@@ -318,24 +318,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     // Make file readable but not executable
     chmod($file_path, 0644);
     
-    // Prepare email
+    // Prepare email with attachment
     $assunto = "Nova Candidatura - " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . " para " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8');
-    $corpo_email = "Nome: " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . "\n";
-    $corpo_email .= "Email: " . $email . "\n";
-    $corpo_email .= "Telefone: " . $telefone . "\n";
-    $corpo_email .= "Cargo: " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8') . "\n";
-    $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
-    $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
-    $corpo_email .= "Arquivo: " . $_FILES["curriculo"]["name"] . "\n";
     
-    // Sanitize headers
+    // Prepare body text
+    $text_body = "Nome: " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . "\n";
+    $text_body .= "Email: " . $email . "\n";
+    $text_body .= "Telefone: " . $telefone . "\n";
+    $text_body .= "Cargo: " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8') . "\n";
+    $text_body .= "Data: " . date('d/m/Y H:i:s') . "\n";
+    $text_body .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
+    $text_body .= "Arquivo: " . $_FILES["curriculo"]["name"] . "\n";
+    
+    // Generate boundary for multipart email
+    $boundary = md5(time());
+    
+    // Headers
     $headers = "From: " . sanitize_email_header($email) . "\r\n";
     $headers .= "Reply-To: " . sanitize_email_header($email) . "\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"" . $boundary . "\"\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     
+    // Construct multipart message body
+    $message = "--" . $boundary . "\r\n";
+    $message .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $message .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+    $message .= $text_body . "\r\n";
+    
+    // Read and encode file
+    $file_content = file_get_contents($file_path);
+    $encoded_content = chunk_split(base64_encode($file_content));
+    
+    $message .= "--" . $boundary . "\r\n";
+    $message .= "Content-Type: " . $file_type . "; name=\"" . $_FILES["curriculo"]["name"] . "\"\r\n";
+    $message .= "Content-Disposition: attachment; filename=\"" . $_FILES["curriculo"]["name"] . "\"\r\n";
+    $message .= "Content-Transfer-Encoding: base64\r\n\r\n";
+    $message .= $encoded_content . "\r\n";
+    $message .= "--" . $boundary . "--";
+
     // Send email
-    if (@mail($admin_email, $assunto, $corpo_email, $headers)) {
+    if (@mail($admin_email, $assunto, $message, $headers)) {
         // Send confirmation email to user
         $confirmacao_assunto = "Recebemos sua candidatura";
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
