@@ -260,7 +260,7 @@ form{
     position: absolute;
 }
 .retangulo-cinza-claro-1, .retangulo-cinza-claro-2, .retangulo-cinza-claro-3, .retangulo-cinza-claro-4{
-    background-color: #CCC;
+    background-color: #DDD;
     top: 0px;
     position: absolute;
 }
@@ -406,6 +406,9 @@ form{
         width: 25%;
         margin-left: -15%;
     }
+    .dobra-parallax{
+        background-attachment: scroll !important;
+    }
 }
 @media (min-width: 769px) and (max-width: 992px) {
     .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
@@ -414,6 +417,9 @@ form{
     }
     .rodape{
         font-size: 0.75rem;
+    }
+    .dobra-parallax{
+        background-attachment: scroll !important;
     }
 }
 @media (min-width: 426px) and (max-width: 768px) {
@@ -442,6 +448,9 @@ form{
     }
     .logo-rodape{
         display:none;
+    }
+    .dobra-parallax{
+        background-attachment: scroll !important;
     }
 }
 @media (max-width: 425px) {
@@ -477,5 +486,8 @@ form{
     }
     .logo-rodape{
         display:none;
+    }
+    .dobra-parallax{
+        background-attachment: scroll !important;
     }
 }
