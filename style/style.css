@@ -259,25 +259,30 @@ form{
     top: 0px;
     position: absolute;
 }
-.retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+.retangulo-cinza-claro-1, .retangulo-cinza-claro-2, .retangulo-cinza-claro-3, .retangulo-cinza-claro-4{
+    background-color: #CCC;
+    top: 0px;
+    position: absolute;
+}
+.retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
     transform: skew(20deg);
     width: 33%;
     height: 101%;
     margin-left: -25%;
 }
-.retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+.retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2, .retangulo-cinza-claro-2 {
     transform: skew(-20deg);
     width: 33%;
     height: 101%;
     margin-left: 100%;
 }
-.retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+.retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3, .retangulo-cinza-claro-3 {
     transform: skew(-20deg);
     width: 33%;
     height: 101%;
     margin-left: -25%;
 }
-.retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+.retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4, .retangulo-cinza-claro-4 {
     transform: skew(20deg);
     width: 33%;
     height: 101%;
@@ -371,25 +376,25 @@ form{
     font-weight: bold;
 }
 @media (min-width: 1441px) and (max-width: 3839px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 15%;
         margin-left: -15%;
     }
 }
 @media (min-width: 1025px) and (max-width: 1440px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 20%;
         margin-left: -20%;
     }
 }
 @media (min-width: 993px) and (max-width: 1024px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 25%;
         margin-left: -15%;
     }
 }
 @media (min-width: 769px) and (max-width: 992px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 30%;
         margin-left: -20%;
     }
@@ -398,19 +403,19 @@ form{
     }
 }
 @media (min-width: 426px) and (max-width: 768px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 60%;
         margin-left: -60%;
     }
-    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2, .retangulo-cinza-claro-2 {
         width: 75%;
         margin-left: 105%;
     }
-    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3, .retangulo-cinza-claro-3 {
         width: 80%;
         margin-left: -80%;
     }
-    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4, .retangulo-cinza-claro-4 {
         width: 90%;
         margin-left: 120%;
     }
@@ -426,19 +431,19 @@ form{
     }
 }
 @media (max-width: 425px) {
-    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1 {
+    .retangulo-amarelo-1, .retangulo-branco-1, .retangulo-cinza-1, .retangulo-cinza-claro-1 {
         width: 75%;
         margin-left: -85%;
     }
-    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2 {
+    .retangulo-amarelo-2, .retangulo-branco-2, .retangulo-cinza-2, .retangulo-cinza-claro-2 {
         width: 110%;
         margin-left: 130%;
     }
-    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3 {
+    .retangulo-amarelo-3, .retangulo-branco-3, .retangulo-cinza-3, .retangulo-cinza-claro-3 {
         width: 150%;
         margin-left: -150%;
     }
-    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4 {
+    .retangulo-amarelo-4, .retangulo-branco-4, .retangulo-cinza-4, .retangulo-cinza-claro-4 {
         width: 110%;
         margin-left: 130%;
     }
