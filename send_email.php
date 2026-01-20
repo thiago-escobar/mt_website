@@ -188,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
         $confirmacao_corpo .= "Obrigado por entrar em contato conosco.\n";
         $confirmacao_corpo .= "Sua mensagem foi recebida e responderemos assim que possível.\n\n";
-        $confirmacao_corpo .= "Atenciosamente,\nEquipe MT Engenharia";
+        $confirmacao_corpo .= "Atenciosamente,\nEquipe Matos Teixeira Engenharia e Serviços";
         
         $confirmacao_headers = "From: " . sanitize_email_header($admin_email) . "\r\n";
         $confirmacao_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
@@ -341,7 +341,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
         $confirmacao_corpo .= "Obrigado por se candidatar para a posição de " . $cargo . ".\n";
         $confirmacao_corpo .= "Sua candidatura foi recebida e analisaremos seu currículo em breve.\n\n";
-        $confirmacao_corpo .= "Atenciosamente,\nEquipe MT Engenharia";
+        $confirmacao_corpo .= "Atenciosamente,\nEquipe Matos Teixeira Engenharia e Serviços";
         
         $confirmacao_headers = "From: " . sanitize_email_header($admin_email) . "\r\n";
         $confirmacao_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
