@@ -1,12 +1,12 @@
 body{
     font-family: 'Century Gothic', sans-serif;
-    background: linear-gradient(180deg, #222 0%,#939598 100%);
+    background: linear-gradient(180deg, #939598 0%,#fff 100%);
     margin: 0;
     padding: 0;
     width: 100%;
 }
 h1{
-    color: #FFF;
+    color: #222;
 }
 h1, h2 {
   text-transform: uppercase;
@@ -32,7 +32,7 @@ h1, h2 {
     }
 }
 .dobra-amarela{
-    background-color: #FFCB05;
+    background-color: rgba(255, 203, 5, 0.75);
     width: 100%;
     height: auto;
     color: #444;
@@ -46,7 +46,7 @@ h1, h2 {
     color: #000;
 }
 .dobra-branca{
-    background-color: #FFF;
+    background-color: rgba(255, 255, 255, 1);
     width: 100%;
     height: auto;
     color: #444;
@@ -60,15 +60,13 @@ h1, h2 {
     color: #000;
 }
 .dobra-cinza{
-    background-color: #444;
+    background-color: rgba(147, 149, 152, 1);
     width: 100%;
     height: auto;
-    /*color: #222;*/
     color: #FFF;
     overflow: hidden;
 }
 .dobra-cinza h2{
-    /*color: #000;*/
     color: #FFF;
 }
 .dobra-cinza .destaque{
@@ -89,6 +87,9 @@ h1, h2 {
     margin-left: -91.5px;
     height: 155px;
     width: 183px;
+}
+.dobra_numeros_contaveis{
+    padding: 7rem 1rem !important;
 }
 .rodape{
     background-color: rgba(0,0,0,0.75);
@@ -237,7 +238,7 @@ form{
 .imagem-fundo-dobra {
     height: 100%;
     filter: grayscale(100%);
-    opacity: 0.15;
+    opacity: 0.075;
 }
 .conteudo_dobra {
     padding: 2rem 1rem;
@@ -331,8 +332,8 @@ form{
 .box-matos-teixeira{
     text-align: center;
     padding: 1rem;
-    background-color: #FFCB05;
-    color: #000;
+    background-color: #939598;
+    color:#FFF;
     /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
@@ -341,37 +342,18 @@ form{
         95% 100%,    /* Fim do corte na base inferior */
         0% 100%      /* Base Esquerda */
     );
+}
+.box-matos-teixeira h3{
+    color:#FFCB05;
 }
 .box-matos-teixeira p{
     margin-bottom: 0rem;
 }
-.box-sede{
-    text-align: center;
-    padding: 1rem;
-    background-color: #444;
-    color: #FFF;
-    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
-    clip-path: polygon(
-        0% 0%,       /* Topo Esquerda */
-        100% 0%,     /* Topo Direita */
-        100% 80%,    /* Início do corte na lateral direita */
-        95% 100%,    /* Fim do corte na base inferior */
-        0% 100%      /* Base Esquerda */
-    );
-}
-.box-sede .destaque{
-    color: #FFCB05;
-    font-weight: bold;
-}
-.box-sede img{
-    height: 64px;
-    width: auto;
-}
 .box-atuacao{
     text-align: center;
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #939598;
+    background-color: #444;
+    color:#FFF;
     font-weight: bold;
     font-size: 1.5rem;
     /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
@@ -384,13 +366,14 @@ form{
     );
 }
 .box-atuacao img{
-    filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(0%);
-    height: 52px;
+    filter: invert(85%) sepia(100%) saturate(100000%) hue-rotate(55deg) brightness(350%) contrast(105%);
+    height: 32px;
     width: auto;
 }
 .box-areas-licenciadas{
     padding: 1rem;
-    background-color: #FFCB05;
+    /*background-color: #FFCB05;*/
+    background-color: #444;
     /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
@@ -402,14 +385,14 @@ form{
     color: #444;
 }
 .box-areas-licenciadas img{
-    filter: invert(100%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(50%);
+    filter: invert(85%) sepia(100%) saturate(100000%) hue-rotate(55deg) brightness(350%) contrast(105%);
     height: 2rem;
     width: 2rem;
     float: left;
     margin-right: 1rem;
 }
 .box-areas-licenciadas img.caminhao{
-    filter: invert(10%) sepia(100%) saturate(126%) hue-rotate(177deg) brightness(100%) contrast(50%);
+    filter: invert(92%) sepia(91%) saturate(100000%) hue-rotate(-40deg) brightness(89%) contrast(115%);
     height: 2rem;
     width: 2rem;
     float: left;
@@ -418,6 +401,7 @@ form{
 .box-areas-licenciadas p{
     margin-bottom: 0rem;
     margin-top: 0.25rem;
+    color: #FFF;
 }
 .box-areas-licenciadas .titulos-box{
     font-weight: bold;
@@ -426,12 +410,24 @@ form{
     text-align: center;
 }
 .galeria-clientes img{
-    border: 3px solid #444;
+    border: 3px solid #FFCB05;
     padding: 0.25rem;
 }
 .alert{
     float: left;
     width: 100%;
+}
+.form-control:focus{
+    border-color: #FFCB05 !important;
+    box-shadow: 0 0 1rem 0.25rem rgba(255, 203, 5, 0.5) !important;
+}
+.form-select:focus{
+    border-color: #FFCB05 !important;
+    box-shadow: 0 0 1rem 0.25rem rgba(255, 203, 5, 0.5) !important;
+}
+.select-amarelo:target {
+  background-color: #FFCB05 !important;
+  color: #000; /* Texto preto para garantir contraste */
 }
 /* novo */
 @media (max-width: 1560px){
