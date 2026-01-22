@@ -224,7 +224,7 @@ form{
     float: right;
     background-color: #FFCB05;
     color: #000;
-    border-color: #000;
+    border-color: #939598;
 }
 .decoracao_dobra {
     position: absolute;
@@ -352,11 +352,10 @@ form{
 .box-atuacao{
     text-align: center;
     padding: 1rem;
-    background-color: #444;
+    background-color: #939598;
     color:#FFF;
     font-weight: bold;
     font-size: 1.5rem;
-    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
         100% 0%,     /* Topo Direita */
@@ -372,9 +371,7 @@ form{
 }
 .box-areas-licenciadas{
     padding: 1rem;
-    /*background-color: #FFCB05;*/
-    background-color: #444;
-    /* Coordenadas: top-left, top-right, bottom-right-superior, bottom-right-inferior, bottom-left */
+    background-color: #939598;
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
         100% 0%,     /* Topo Direita */
@@ -404,6 +401,33 @@ form{
     color: #FFF;
 }
 .box-areas-licenciadas .titulos-box{
+    font-weight: bold;
+}
+.box-sustentabilidade{
+    padding: 1rem;
+    background-color: #FFF;
+    clip-path: polygon(
+        0% 0%,       /* Topo Esquerda */
+        100% 0%,     /* Topo Direita */
+        100% 70%,    /* Início do corte na lateral direita */
+        95% 100%,    /* Fim do corte na base inferior */
+        0% 100%      /* Base Esquerda */
+    );
+    color: #444;
+}
+.box-sustentabilidade img{
+    filter: invert(85%) sepia(100%) saturate(100000%) hue-rotate(55deg) brightness(350%) contrast(105%);
+    height: 2rem;
+    width: 2rem;
+    float: left;
+    margin-right: 1rem;
+}
+.box-sustentabilidades p{
+    margin-bottom: 0rem;
+    margin-top: 0.25rem;
+    color: #FFF;
+}
+.box-sustentabilidade .titulos-box{
     font-weight: bold;
 }
 .galeria-clientes{
