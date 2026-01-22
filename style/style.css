@@ -10,6 +10,7 @@ h1{
 }
 h1, h2 {
   text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 .menu-topo{
     background-color: #fff;
@@ -60,7 +61,8 @@ h1, h2 {
     color: #000;
 }
 .dobra-cinza{
-    background-color: rgba(147, 149, 152, 1);
+    /*background-color: rgba(147, 149, 152, 1);*/
+    background-color: #444;
     width: 100%;
     height: auto;
     color: #FFF;
@@ -92,7 +94,8 @@ h1, h2 {
     padding: 7rem 1rem !important;
 }
 .rodape{
-    background-color: rgba(0,0,0,0.75);
+    background-color: #444;
+    border-top: 1px solid #939598;
     padding: 2rem 0;
     width: 100%;
     height: auto;
@@ -224,7 +227,7 @@ form{
     float: right;
     background-color: #FFCB05;
     color: #000;
-    border-color: #939598;
+    border-color: #000;
 }
 .decoracao_dobra {
     position: absolute;
@@ -241,7 +244,7 @@ form{
     opacity: 0.075;
 }
 .conteudo_dobra {
-    padding: 2rem 1rem;
+    padding: 4rem 1rem;
     position: relative;
     z-index: 2;
 }
@@ -355,7 +358,7 @@ form{
     background-color: #939598;
     color:#FFF;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1rem;
     clip-path: polygon(
         0% 0%,       /* Topo Esquerda */
         100% 0%,     /* Topo Direita */
@@ -363,6 +366,7 @@ form{
         95% 100%,    /* Fim do corte na base inferior */
         0% 100%      /* Base Esquerda */
     );
+    margin: 1rem 4rem;
 }
 .box-atuacao img{
     filter: invert(85%) sepia(100%) saturate(100000%) hue-rotate(55deg) brightness(350%) contrast(105%);
