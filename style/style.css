@@ -373,6 +373,9 @@ form{
     height: 32px;
     width: auto;
 }
+.box-atuacao p{
+    margin-bottom: 0rem;
+}
 .box-areas-licenciadas{
     padding: 1rem;
     background-color: #939598;
