@@ -308,4 +308,62 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
+
+    // Highlight menu items on scroll
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const menuSections = new Map();
+    
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            const id = href.substring(1);
+            const element = document.getElementById(id);
+            if (element) {
+                const section = element.closest('section');
+                if (section) {
+                    menuSections.set(section, link);
+                }
+            }
+        }
+    });
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            const link = menuSections.get(entry.target);
+            if (entry.isIntersecting) {
+                navLinks.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.parentElement) l.parentElement.classList.remove('active-li');
+                });
+                link.classList.add('active');
+                if (link.parentElement) link.parentElement.classList.add('active-li');
+            } else {
+                link.classList.remove('active');
+                if (link.parentElement) link.parentElement.classList.remove('active-li');
+            }
+        });
+    };
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+    };
+
+    const sectionObserver = new IntersectionObserver(observerCallback, observerOptions);
+    
+    menuSections.forEach((link, section) => {
+        sectionObserver.observe(section);
+    });
+
+    // Close mobile menu when clicking on a link
+    const navbarCollapse = document.getElementById('navbarNav');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) bsCollapse.hide();
+            }
+        });
+    });
 });
