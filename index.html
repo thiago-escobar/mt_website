@@ -10,9 +10,26 @@
 </head>
 <body>
     <header class="menu-topo">
-        <div class="container blank-0">
-            <img src="img/logo.png" alt="Logo Matos Teixeira Engenharia e Serviços" height="50">
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container blank-0">
+                <a class="navbar-brand" href="#">
+                    <img src="img/logo.png" alt="Logo Matos Teixeira Engenharia e Serviços" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="#a-matos-teixeira">A Matos Teixeira</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#areas-de-atuacao">Atuação</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#clientes">Clientes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#localizacao">Localização</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#trabalhe-conosco">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
     <section class="dobra-parallax" data-foto="img/capa_site_matos_teixeira.png" data-position="center center">
         <img src="img/matos-teixeira-logo.png" alt="Logo Matos Teixeira Engenharia e Serviços">
@@ -20,13 +37,14 @@
     <section class="dobra-branca">
         <div class="decoracao_dobra">
             <div class="triangulo-gigante-decoracao triangulo-esquerda-superior triangulo-cinza"></div>
-            <div class="imagem-fundo-dobra" data-foto="img/imagem_13.jpg"></div>
+            <div class="imagem-fundo-dobra" data-foto="img/imagem_12.jpg"></div>
         </div>
-        <div class="container blank-0 conteudo_dobra">
+        <div class="container blank-0 conteudo_dobra dobra-a-empresa">
             <div class="col-12">
-               <h1>A Matos Teixeira</h1>
+               <h1 id="a-matos-teixeira">A Matos Teixeira</h1>
+               <p>Fundada há 35 anos pelo engenheiro Antônio Fernando Matos Teixeira, a <span class="destaque">Matos Teixeira Engenharia e Serviços</span>, hoje parte do Grupo Matos Teixeira, é referência em <span class="destaque">confiança, qualidade e eficiência</span> na região da Costa Verde – RJ.</p>
             </div>
-            <div class="row">
+            <!--div class="row">
                 <div class="col-12 col-md-7 pe-md-2">
                     <p>Fundada há 35 anos pelo engenheiro Antônio Fernando Matos Teixeira, a <span class="destaque">Matos Teixeira Engenharia e Serviços</span>, hoje parte do Grupo Matos Teixeira, é referência em <span class="destaque">confiança, qualidade e eficiência</span> na região da Costa Verde – RJ</p>
                     <p>A empresa iniciou suas atividades atuando em <span class="destaque">terraplanagem e locação de equipamentos</span> em <span class="destaque">1991</span>. Expandiu posteriormente para o ramo de <span class="destaque">serviços, saneamento básico e conservação</span> até 2006, quando passou a investir também em <span class="destaque">administração</span> e <span class="destaque">execução de obras industriais</span>.</p>
@@ -62,7 +80,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div-->
     </section>
     <section class="dobra-cinza">
         <div class="container blank-0 conteudo_dobra dobra_numeros_contaveis">
@@ -105,10 +123,11 @@
     <section class="dobra-branca">
         <div class="decoracao_dobra">
             <div class="triangulo-gigante-decoracao triangulo-esquerda-superior triangulo-cinza"></div>
+            <div class="triangulo-gigante-decoracao triangulo-direita-inferior triangulo-cinza"></div>
             <div class="imagem-fundo-dobra" data-foto="img/imagem_4.jpg"></div>
         </div>
         <div class="container blank-0 conteudo_dobra">
-            <h2>Áreas de Atuação</h2>
+            <h2 id="areas-de-atuacao">Áreas de Atuação</h2>
             <p>A Matos Teixeira atua tanto ao <span class="destaque">poder público</span> quanto às <span class="destaque">iniciativas privadas</span>, nos seguintes segmentos:</p>
             <div class="row colunas-sem-margem">
                 <div class="col-12 col-md-4">
@@ -174,6 +193,59 @@
             </div>
         </div>
     </section>
+    <section class="dobra-cinza">
+        <div class="decoracao_dobra">
+            <div class="imagem-fundo-dobra" data-foto="img/imagem_7.JPG"></div>
+        </div>
+        <div class="container blank-0 conteudo_dobra">
+            <div class="row">
+                <div class="col-12">
+                    <h2 id="clientes">Nossos Clientes</h2>
+                    <p>Atendemos as maiores empresas da região.</p>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-governo-do-rio-de-janeiro.png" alt="Governo do Rio de Janeiro" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-prefeitura-angra-dos-reis.png" alt="Prefeitura de Angra dos Reis" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-inea.png" alt="INEA" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-technip.png" alt="Technip" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-turisangra.png" alt="Turisangra" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-brasfels.png" alt="Brasfels" class="img-fluid mb-3" />
+                </div>
+            </div>
+            <div class="row mt-2 mt-lg-0 g-3">
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-saae.png" alt="SAAE" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-eletrobras.png" alt="Eletrobras" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-fasano.png" alt="Fasano" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-frade.png" alt="FRAD.E" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-bhg.png" alt="BHG" class="img-fluid mb-3" />
+                </div>
+                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
+                    <img src="img/cliente-vila-gale.png" alt="Vila Galé Hotéis" class="img-fluid mb-3" />
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="dobra-parallax" data-foto="img/imagem_10.JPG" data-position="center center"></section>
     <section class="dobra-branca">
         <div class="decoracao_dobra">
@@ -183,7 +255,7 @@
         </div>
         <div class="container blank-0 conteudo_dobra">
             <h2>Responsabilidade Ambiental</h2>
-            <div class="row">
+            <!--div class="row">
                 <div class="col-12 col-md-8 pe-md-2">
                     <p>A Matos Teixeira Engenharia e Serviços adota <span class="destaque">práticas sustentáveis</span> em suas operações, buscando <span class="destaque">minimizar os impactos ambientais</span> e promover a <span class="destaque">conservação dos recursos naturais</span>. A empresa investe em <span class="destaque">tecnologias limpas, gestão eficiente de resíduos e programas de conscientização ambiental</span> entre seus colaboradores e parceiros.</p>
                     <p>Além disso, estamos comprometididos com a <span class="destaque">responsabilidade social</span>, apoiando iniciativas comunitárias e projetos que visam o <span class="destaque">desenvolvimento sustentável</span> das regiões onde atua. A empresa acredita que o crescimento econômico deve estar alinhado com a <span class="destaque">preservação do meio ambiente e o bem-estar da sociedade</span>.</p>
@@ -191,9 +263,9 @@
                 <div class="col-12 col-md-4">
                     <img src="img/imagem_8.JPG" alt="Responsabilidade Ambiental" class="img_dobra">
                 </div>
-            </div>
+            </div-->
             <div class="col-12 mt-4 mt-md-4">
-                <h3>Áreas Licenciadas</h3>
+                <h3 id="areas-licenciadas">Áreas Licenciadas</h3>
             </div>
             <div class="row">
                 <div class="col-12 col-md-6">
@@ -269,22 +341,22 @@
     </section>
     <section class="dobra-cinza">
         <div class="decoracao_dobra">
-            <div class="triangulo-decoracao triangulo-direita-superior triangulo-cinza"></div>
-            <div class="triangulo-decoracao triangulo-direita-inferior triangulo-cinza"></div>
+            <div class="triangulo-decoracao triangulo-direita-superior triangulo-branco"></div>
+            <div class="triangulo-decoracao triangulo-direita-inferior triangulo-branco"></div>
             <div class="imagem-fundo-dobra" data-foto="img/imagem_2.jpg"></div>
         </div>
         <div class="container blank-0 conteudo_dobra">
-            <div class="row">
+            <!--div class="row">
                 <div class="col-12">
                     <h2>Compromisso com a comunidade</h2>
                     <p>Acreditamos que o <span class="destaque">sucesso de um negócio</span> não deve ser medido apenas por seus resultados financeiros, mas pelo <span class="destaque">rastro positivo que deixamos no mundo</span>. Entendemos que fazemos parte de um ecossistema interconectado e, por isso, a <span class="destaque">sustentabilidade e a responsabilidade social</span> estão no cerne da nossa estratégia e dos nossos valores.</p>
                     <p>A sustentabilidade não é um destino final, mas um <span class="destaque">processo de melhoria contínua</span>. Na Matos Teixeira renovamos diariamente nosso pacto com as próximas gerações, <span class="destaque">inovando</span> em nossas práticas para <span class="destaque">garantir</span> que <span class="destaque">o crescimento de hoje não comprometa as possibilidades de amanhã</span>.</p>
                     <p><span class="destaque">Juntos, construímos um futuro mais verde, justo e humano.</span></p>
                 </div>
-            </div>
+            </div-->
             <div class="row">
                 <div class="col-12">
-                    <h3>Sustentabilidade</h3>
+                    <h3 id="sustentabilidade">Sustentabilidade</h3>
                 </div>
             </div>
             <div class="row">
@@ -305,7 +377,7 @@
             </div>
             <div class="row">
                 <div class="col-12 mt-4">
-                    <h3>Responsabilidade Social</h3>
+                    <h3 id="responsabilidade-social">Responsabilidade Social</h3>
                 </div>
             </div>
             <div class="row">
@@ -322,60 +394,6 @@
                         <p><span class="titulos-box">PCD – Pessoas com deficiência</span></p>
                         <p>Programa de integração social, oferecendo mais de 50 vagas para pessoas com deficiência.</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="dobra-branca">
-        <div class="decoracao_dobra">
-            <div class="triangulo-gigante-decoracao triangulo-direita-superior triangulo-cinza"></div>
-            <div class="imagem-fundo-dobra" data-foto="img/imagem_7.JPG"></div>
-        </div>
-        <div class="container blank-0 conteudo_dobra">
-            <div class="row">
-                <div class="col-12">
-                    <h2>Nossos Clientes</h2>
-                    <p>A Matos Teixeira orgulha-se de ter construído uma trajetória sólida de <span class="destaque">parcerias estratégicas</span> em Angra dos Reis e região. Atendemos com excelência grandes nomes do <span class="destaque">setor público e privado</span>, oferecendo <span class="destaque">soluções que impulsionam o desenvolvimento regional</span>. Nossa carteira de clientes reflete a <span class="destaque">confiança</span> depositada em nossa <span class="destaque">capacidade técnica e compromisso com a qualidade</span>.</p>
-                </div>
-            </div>
-            <div class="row g-3">
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-governo-do-rio-de-janeiro.png" alt="Governo do Rio de Janeiro" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-prefeitura-angra-dos-reis.png" alt="Prefeitura de Angra dos Reis" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-inea.png" alt="INEA" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-technip.png" alt="Technip" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-turisangra.png" alt="Turisangra" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-brasfels.png" alt="Brasfels" class="img-fluid mb-3" />
-                </div>
-            </div>
-            <div class="row mt-2 mt-lg-0 g-3">
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-saae.png" alt="SAAE" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-eletrobras.png" alt="Eletrobras" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-fasano.png" alt="Fasano" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-frade.png" alt="FRAD.E" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-bhg.png" alt="BHG" class="img-fluid mb-3" />
-                </div>
-                <div class="col-6 col-md-4 col-lg-2 galeria-clientes">
-                    <img src="img/cliente-vila-gale.png" alt="Vila Galé Hotéis" class="img-fluid mb-3" />
                 </div>
             </div>
         </div>
@@ -410,39 +428,15 @@
             </div>
         </div>
     </section-->
-    <section class="dobra-cinza" id="dobra-maps">
-        <div class="decoracao_dobra">
-            <div class="triangulo-decoracao triangulo-esquerda-inferior triangulo-branco"></div>
-        </div>
-        <div class="container blank-0 conteudo_dobra">
-            <div class="row">
-                <div class="col-md-4 col-interna">
-                    <h2>Onde Estamos</h2>
-                    <p>Localizada no coração da Japuíba, a Matos Teixeira Engenharia e Serviços combina <span class="destaque">infraestrutura moderna e atendimento personalizado</span>. Estamos de portas abertas para <span class="destaque">discutir novos desafios</span> e transformar <span class="destaque">suas ideias em realidade.</span></p>
-                    <p>Nossa sede está posicionada na Rua Prefeito João Luiz Gibrail Rocha, 1978 – Japuíba, Angra dos Reis/RJ. <span class="destaque">Venha nos conhecer!</span></p>
-                </div>         
-                <div class="col-12 col-md-8 col-interna" id="dobra-maps-content">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d918.3916373593669!2d-44.29999950067729!3d-22.966185104754434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c4fded19b0933%3A0xc2c1052aff8a7d1b!2sMatos%20Teixeira%20Engenharia%20e%20Servi%C3%A7os!5e0!3m2!1spt-BR!2sbr!4v1767877418568!5m2!1spt-BR!2sbr"
-                        width="100%"
-                        height="400"
-                        style="border:0;"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="dobra-parallax" data-foto="img/imagem_11.JPG" data-position="top left"></section>
     <section class="dobra-branca">
         <div class="decoracao_dobra">
-            <div class="triangulo-gigante-decoracao triangulo-direita-superior triangulo-cinza"></div>
+            <div class="triangulo-gigante-decoracao triangulo-esquerda-superior triangulo-cinza"></div>
         </div>
         <div class="container blank-0 conteudo_dobra">
             <div class="row">
                 <div class="col-12 col-interna mb-3">
-                    <h2>Contato</h2>
+                    <h2 id="contato">Contato</h2>
                 </div>
             </div>
             <form id="form_contato">
@@ -474,14 +468,35 @@
             </form>
         </div>
     </section>
-    <section class="dobra-parallax" data-foto="img/imagem_11.JPG" data-position="top left"></section>
-    <section class="dobra-cinza">
+    <section class="dobra-cinza" id="dobra-maps">
+        <div class="container blank-0 conteudo_dobra">
+            <div class="row">
+                <div class="col-md-4 col-interna">
+                    <h2 id="localizacao">Onde Estamos</h2>
+                    <p>Rua Prefeito João Luiz Gibrail Rocha, 1978 – Japuíba, Angra dos Reis/RJ.</p>
+                </div>         
+                <div class="col-12 col-md-8 col-interna" id="dobra-maps-content">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d918.3916373593669!2d-44.29999950067729!3d-22.966185104754434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9c4fded19b0933%3A0xc2c1052aff8a7d1b!2sMatos%20Teixeira%20Engenharia%20e%20Servi%C3%A7os!5e0!3m2!1spt-BR!2sbr!4v1767877418568!5m2!1spt-BR!2sbr"
+                        width="100%"
+                        height="400"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa de localização da Matos Teixeira Engenharia">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="dobra-branca">
         <div class="decoracao_dobra">
-            <div class="triangulo-gigante-decoracao triangulo-esquerda-inferior triangulo-cinza"></div>
+            <div class="triangulo-gigante-decoracao triangulo-direita-inferior triangulo-cinza"></div>
         </div>
         <div class="container blank-0 conteudo_dobra">
             <div class="col-12 col-interna mb-3">
-                <h2>Trabalhe Conosco</h2>
+                <h2 id="trabalhe-conosco">Trabalhe Conosco</h2>
             </div>
             <form id="form_trabalhe">
                 <div class="row">
@@ -543,7 +558,7 @@
                 <div class="col-12 col-md-6 mt-0 mt-md-4 mt-lg-3 mb-md-0">
                     <ul class="list-unstyled">
                         <li><i class="bi bi-telephone-fill"></i> +55 (24) 3377-9747 / +55 (24) 3365-3735</li>
-                        <li><i class="bi bi-geo-alt-fill"></i> Rua Prefeito João Luiz Gilbrail Rocha 1978, Japuíba - Angra dos Reis, RJ</li>
+                        <li><i class="bi bi-geo-alt-fill"></i> Rua Prefeito João Luiz Gibrail Rocha 1978, Japuíba - Angra dos Reis, RJ</li>
                     </ul>
                 </div>
             </div>
