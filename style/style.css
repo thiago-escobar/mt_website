@@ -1,3 +1,7 @@
+html {
+    scroll-padding-top: 140px;
+    scroll-behavior: smooth;
+}
 body{
     font-family: 'Century Gothic', sans-serif;
     background: linear-gradient(180deg, #939598 0%,#fff 100%);
@@ -9,8 +13,15 @@ h1{
     color: #222;
 }
 h1, h2 {
-  text-transform: uppercase;
-  margin-bottom: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    text-decoration: underline;
+    text-decoration-color: #FFCB05;    /* Cor */
+    text-decoration-thickness: 0.25rem;    /* Espessura */
+    text-underline-offset: 1rem;        /* Afasta a linha do texto */
+}
+p{
+    font-size: 1.5rem;
 }
 .menu-topo{
     background-color: #fff;
@@ -89,6 +100,12 @@ h1, h2 {
     margin-left: -91.5px;
     height: 155px;
     width: 183px;
+}
+.dobra-a-empresa{
+    padding: 8rem 1rem !important;
+}
+.dobra-a-empresa p{
+    margin-bottom: 0rem;
 }
 .dobra_numeros_contaveis{
     padding: 7rem 1rem !important;
@@ -354,7 +371,7 @@ form{
 }
 .box-atuacao{
     text-align: center;
-    padding: 4rem;
+    padding: 2rem;
     /*background-color: #939598;*/
     /*color:#FFF;*/
     font-weight: bold;
@@ -411,6 +428,7 @@ form{
 .box-areas-licenciadas p{
     margin-bottom: 0rem;
     margin-top: 0.25rem;
+    font-size: 1rem;
     color: #FFF;
 }
 .box-areas-licenciadas .titulos-box{
@@ -435,10 +453,11 @@ form{
     float: left;
     margin-right: 1rem;
 }
-.box-sustentabilidades p{
+.box-sustentabilidade p{
     margin-bottom: 0rem;
     margin-top: 0.25rem;
-    color: #FFF;
+    /*color: #FFF;*/
+    font-size: 1rem;
 }
 .box-sustentabilidade .titulos-box{
     font-weight: bold;
@@ -457,7 +476,7 @@ hr {
     text-align: center;
 }
 .galeria-clientes img{
-    border: 3px solid #FFCB05;
+    border: 3px solid #939598;
     padding: 0.25rem;
 }
 .alert{
@@ -624,6 +643,9 @@ hr {
     }
 }
 @media (max-width: 991px){
+    .navbar-nav{
+        margin-top: 2rem;
+    }
     .triangulo-gigante-decoracao{
         width: 7%;
     }
@@ -756,4 +778,20 @@ hr {
     .rodape p{
         font-size: 0.6rem;
     }
+}
+
+.navbar-nav .nav-link {
+    color: #444;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #FFCB05 !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item.active-li {
+    background-color: #444;
+    border-radius: 5px;
 }
