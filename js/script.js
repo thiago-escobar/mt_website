@@ -189,11 +189,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const nome = document.getElementById('nome_contato').value;
                 const email = document.getElementById('email_contato').value;
                 const mensagem = document.getElementById('mensagem_contato').value;
+                const consentimento = document.getElementById('consentimento_contato').checked;
                 const csrf_token = document.getElementById('csrf_token_contato').value;
                 
                 // Simple validation
-                if (!nome || !email || !mensagem) {
-                    showBootstrapAlert(formContato, 'Por favor, preencha todos os campos', 'warning');
+                if (!nome || !email || !mensagem || !consentimento) {
+                    showBootstrapAlert(formContato, 'Por favor, preencha todos os campos e confirme o consentimento.', 'warning');
                     return;
                 }
                 
@@ -254,11 +255,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const telefone = document.getElementById('telefone_trabalhe').value;
                 const cargo = document.getElementById('cargo_trabalhe').value;
                 const curriculo = document.getElementById('curriculo_trabalhe').files[0];
+                const consentimento = document.getElementById('consentimento_trabalhe').checked;
                 const csrf_token = document.getElementById('csrf_token_trabalhe').value;
                 
                 // Simple validation
-                if (!nome || !email || !telefone || !cargo || !curriculo) {
-                    showBootstrapAlert(formTrabalhe, 'Por favor, preencha todos os campos', 'warning');
+                if (!nome || !email || !telefone || !cargo || !curriculo || !consentimento) {
+                    showBootstrapAlert(formTrabalhe, 'Por favor, preencha todos os campos e confirme o consentimento.', 'warning');
                     return;
                 }
                 
