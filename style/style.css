@@ -505,6 +505,16 @@ hr {
   background-color: #FFCB05 !important;
   color: #000; /* Texto preto para garantir contraste */
 }
+.aviso-privacidade{
+    background-color: #444;
+    color: #FFCB05;
+    padding: 1rem;
+    clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 97% 100%, 100% 70%);
+}
+.aviso-privacidade i{
+    font-size: 2.5rem;
+    margin-top: -0.5rem
+}
 /* novo */
 @media (max-width: 1560px){
     .triangulo-gigante-decoracao{
@@ -815,6 +825,6 @@ hr {
 }
 
 .navbar-nav .nav-item.active-li {
-    background-color: #444;
+    background-color: #939598;
     clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 90% 100%, 100% 70%);
 }
