@@ -368,4 +368,40 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    // Carousel Clientes Automatico
+    function initCarouselClientes() {
+        const track = document.querySelector('.carousel-clientes-track');
+        if (!track) return;
+
+        let isTransitioning = false;
+
+        function moveCarousel() {
+            if (isTransitioning) return;
+            
+            const firstItem = track.firstElementChild;
+            if (!firstItem) return;
+            
+            const itemWidth = firstItem.getBoundingClientRect().width;
+            
+            isTransitioning = true;
+            track.style.transition = 'transform 0.5s ease';
+            track.style.transform = `translateX(-${itemWidth}px)`;
+            
+            track.addEventListener('transitionend', () => {
+                track.style.transition = 'none';
+                track.appendChild(firstItem);
+                track.style.transform = 'translateX(0)';
+                
+                // Force reflow
+                void track.offsetWidth;
+                
+                isTransitioning = false;
+            }, { once: true });
+        }
+
+        setInterval(moveCarousel, 1500); // Muda a cada 3 segundos
+    }
+    
+    initCarouselClientes();
 });

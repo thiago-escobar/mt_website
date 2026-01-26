@@ -489,8 +489,27 @@ hr {
     text-align: center;
 }
 .galeria-clientes img{
-    border: 3px solid #939598;
+    /*border: 3px solid #939598;*/
     padding: 0.25rem;
+    width: 100%;
+    height: auto;
+    background: #fff;
+}
+.carousel-clientes-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 1rem 0;
+}
+.carousel-clientes-track {
+    display: flex;
+    width: 100%;
+}
+.carousel-item-cliente {
+    flex: 0 0 20%;
+    max-width: 20%;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 }
 .alert{
     float: left;
@@ -708,6 +727,10 @@ form select{
         padding-left: 1rem;
         clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 100% 100%) !important;
     }
+    .carousel-item-cliente {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
     .triangulo-gigante-decoracao{
         width: 7%;
     }
@@ -791,6 +814,10 @@ form select{
     .aviso-privacidade {
         clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 90% 100%, 100% 70%);
     }
+    .carousel-item-cliente {
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
 }
 @media (max-width: 621px){
     .triangulo-gigante-decoracao{
@@ -808,6 +835,10 @@ form select{
     .triangulo-decoracao.triangulo-direita-inferior,
     .triangulo-decoracao.triangulo-direita-superior{
         left: 93%;
+    }
+    .carousel-item-cliente {
+        flex: 0 0 50%;
+        max-width: 50%;
     }
 }
 @media (max-width: 591px){
