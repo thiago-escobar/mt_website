@@ -1,6 +1,9 @@
 <?php
 // Configuration
 $admin_email = "thiagoescobar@matosteixeira.com.br"; // Change this to your email
+$contato_email="matosteixeira@matosteixeira.com.br"; // Change this to your email
+$trabalhe_conosco_email="rh@matosteixeira.com.br"; // Change this to your email
+
 $max_file_size = 5 * 1024 * 1024; // 5MB in bytes
 $upload_dir = "uploads/";
 $log_file = "logs/email_log.txt";
@@ -93,7 +96,6 @@ function log_email($form_type, $email, $success, $error_msg = '') {
     $log_message = date('Y-m-d H:i:s') . " | ";
     $log_message .= "Type: $form_type | ";
     $log_message .= "Email: $email | ";
-    $log_message .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . " | ";
     $log_message .= "Status: " . ($success ? "SUCCESS" : "FAILED") . " | ";
     
     if (!empty($error_msg)) {
@@ -172,17 +174,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $corpo_email = "Nome: " . html_entity_decode($nome, ENT_QUOTES, 'UTF-8') . "\n";
     $corpo_email .= "Email: " . $email . "\n";
     $corpo_email .= "Data: " . date('d/m/Y H:i:s') . "\n";
-    $corpo_email .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
     $corpo_email .= "Mensagem:\n" . html_entity_decode($mensagem, ENT_QUOTES, 'UTF-8');
     
     // Sanitize headers to prevent header injection
     $headers = "From: " . sanitize_email_header($email) . "\r\n";
     $headers .= "Reply-To: " . sanitize_email_header($email) . "\r\n";
+    $headers .= "Cc: " . sanitize_email_header($admin_email) . "\r\n";
     $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
     
     // Send email
-    if (@mail($admin_email, $assunto, $corpo_email, $headers)) {
+    if (@mail($contato_email, $assunto, $corpo_email, $headers)) {
         // Send confirmation email to user
         $confirmacao_assunto = "Recebemos seu contato";
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
@@ -321,7 +323,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $text_body .= "Telefone: " . $telefone . "\n";
     $text_body .= "Cargo: " . html_entity_decode($cargo, ENT_QUOTES, 'UTF-8') . "\n";
     $text_body .= "Data: " . date('d/m/Y H:i:s') . "\n";
-    $text_body .= "IP: " . sanitize_input($_SERVER['REMOTE_ADDR']) . "\n";
     $text_body .= "Arquivo: " . $_FILES["curriculo"]["name"] . "\n";
     
     // Generate boundary for multipart email
@@ -330,6 +331,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     // Headers
     $headers = "From: " . sanitize_email_header($email) . "\r\n";
     $headers .= "Reply-To: " . sanitize_email_header($email) . "\r\n";
+    $headers .= "Cc: " . sanitize_email_header($admin_email) . "\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-Type: multipart/mixed; boundary=\"" . $boundary . "\"\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
@@ -352,7 +354,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["form_type"]) && $_POST
     $message .= "--" . $boundary . "--";
 
     // Send email
-    if (@mail($admin_email, $assunto, $message, $headers)) {
+    if (@mail($trabalhe_conosco_email, $assunto, $message, $headers)) {
         // Send confirmation email to user
         $confirmacao_assunto = "Recebemos sua candidatura";
         $confirmacao_corpo = "Olá " . $nome . ",\n\n";
