@@ -493,6 +493,11 @@ hr {
     float: left;
     width: 100%;
 }
+form input,
+form textarea,
+form select{
+    border-color: #444 !important;
+}
 .form-control:focus{
     border-color: #FFCB05 !important;
     box-shadow: 0 0 1rem 0.25rem rgba(255, 203, 5, 0.5) !important;
@@ -500,6 +505,13 @@ hr {
 .form-select:focus{
     border-color: #FFCB05 !important;
     box-shadow: 0 0 1rem 0.25rem rgba(255, 203, 5, 0.5) !important;
+}
+.select-amarelo option:hover, 
+.select-amarelo  option:focus, 
+.select-amarelo option:active {
+    background: linear-gradient(#444, #939598) !important;
+    background-color: #444 !important; /* Cor desejada */
+    color: #FFCB05 !important;
 }
 .select-amarelo:target {
   background-color: #FFCB05 !important;
@@ -514,6 +526,20 @@ hr {
 .aviso-privacidade i{
     font-size: 2.5rem;
     margin-top: -0.5rem
+}
+/* Muda a cor de fundo quando marcado */
+.form-check-input:checked {
+    background-color: #444; /* Sua cor aqui */
+    border-color: #FFCB05;
+    /* O segredo está aqui: o %23 substitui o # do hexadecimal */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23FFCB05' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+
+/* Muda a cor da sombra (foco) */
+.form-check-input:focus {
+    border-color: #444;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #FFCB05;
 }
 /* novo */
 @media (max-width: 1560px){
