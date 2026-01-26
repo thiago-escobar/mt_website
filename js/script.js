@@ -66,10 +66,38 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (imgInterna) {
                 const urlImgInterna = imgInterna.src;
-                const size = window.innerWidth < 768 ? '33%' : '15%';
+                ///const size = window.innerWidth < 768 ? '20%' : '15%';
+                let size = '7%';
+                if(window.innerWidth < 2200){
+                    size = '8.5%';
+                    if(window.innerWidth < 1750){
+                        size = '10%';
+                        if(window.innerWidth < 1439){
+                            size = '10%';
+                            if(window.innerWidth < 1280){
+                                size = '12.5%';
+                                if(window.innerWidth < 1025){
+                                    size = '15%';
+                                    if(window.innerWidth < 770){
+                                        size = '20%';
+                                        if(window.innerWidth < 600){
+                                            size = '25%';
+                                            if(window.innerWidth < 500){
+                                                size = '35%';
+                                                if(window.innerWidth < 350){
+                                                    size = '45%';
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } 
                 div.style.setProperty('background-image', `url("${urlImgInterna}"), url("${urlIimagem}")`, 'important');
                 div.style.setProperty('background-size', `${size} auto, cover`, 'important');
-                div.style.setProperty('background-position', 'center center, center center', 'important');
+                div.style.setProperty('background-position', "center 70%, center center", 'important');
                 div.style.setProperty('background-attachment', 'scroll, fixed', 'important');
                 div.style.setProperty('background-repeat', 'no-repeat, no-repeat', 'important');
                 imgInterna.style.display = 'none';
