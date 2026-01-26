@@ -750,6 +750,9 @@ form select{
     .dobra-parallax{
         background-attachment: scroll !important;
     }
+    .logo-rodape{
+        display:none;
+    }
     .rodape{
         font-size: 0.75rem;
     }
@@ -807,9 +810,6 @@ form select{
     }
     .rodape li{
         margin-bottom: 0.5rem;
-    }
-    .logo-rodape{
-        display:none;
     }
     .aviso-privacidade {
         clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 90% 100%, 100% 70%);
