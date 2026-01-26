@@ -266,6 +266,9 @@ form{
     filter: grayscale(100%);
     opacity: 0.075;
 }
+.dobra-branca .imagem-fundo-dobra{
+    opacity: 0.125 !important;
+}
 .conteudo_dobra {
     padding: 4rem 1rem;
     position: relative;
