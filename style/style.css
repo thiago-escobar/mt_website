@@ -785,6 +785,9 @@ form select{
     .logo-rodape{
         display:none;
     }
+    .aviso-privacidade {
+        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 90% 100%, 100% 70%);
+    }
 }
 @media (max-width: 621px){
     .triangulo-gigante-decoracao{
@@ -825,6 +828,11 @@ form select{
 @media (max-width: 575px){
     .triangulo-gigante-decoracao, .triangulo-direita-inferior, .triangulo-direita-superior, .triangulo-esquerda-inferior, .triangulo-esquerda-superior{
         display:none;
+    }
+}
+@media (max-width: 440px) {
+    .aviso-privacidade {
+        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 95% 100%, 100% 85%);
     }
 }
 @media (max-width: 425px) {
